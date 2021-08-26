@@ -1,46 +1,30 @@
 <template class="page">
   <b-container>
-    <b-row class="center">
-      <b-col cols="12" md="7">
-        <p>
-          Townsmeet is where you connect and engage with the people, businesses
-          and public authorities in your town. Have conversations about what
-          affects you where you live, work, school and trade.
-        </p>
-      </b-col>
-      <b-col cols="12" md="5">
-        <b-card title="Create your account">
+    <b-row class="center" align-h="center">
+      <b-col cols="12" md="8" lg="5">
+        <b-card title="Verify your email">
           <b-card-text>
-            It's free and quick.
+            Enter the verification code we sent to your email.
           </b-card-text>
           <b-form class="mt-5" @submit="onSubmit">
             <b-form-input
-              id="email"
-              v-model="email"
-              placeholder="Email"
-              type="email"
+              id="code"
+              v-model="code"
+              placeholder="Enter 6 digit code"
+              type="number"
               required
               class="input"
             />
-            <b-form-input
-              id="password"
-              v-model="password"
-              placeholder="Password"
-              type="password"
-              required
-              class="input"
-            />
-            <small>By clicking "Sign Up", you agree to our terms of use and privacy policy.</small>
             <b-button block type="submit" class="button" variant="success">
-              Sign Up
+              Verify
             </b-button>
           </b-form>
           <hr>
           <b-card-text>
-            Already have an account?
-            <NuxtLink to="/signin" class="link">
-              Sign In.
-            </NuxtLink>
+            Didn't get the code?
+            <span class="link">
+              Resend
+            </span>
           </b-card-text>
         </b-card>
       </b-col>
@@ -52,8 +36,7 @@
 export default {
   data () {
     return {
-      email: '',
-      password: ''
+      code: ''
     }
   },
   methods: {

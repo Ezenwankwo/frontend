@@ -1,17 +1,11 @@
 <template class="page">
   <b-container>
-    <b-row class="center">
-      <b-col cols="12" md="7">
-        <p>
-          Townsmeet is where you connect and engage with the people, businesses
-          and public authorities in your town. Have conversations about what
-          affects you where you live, work, school and trade.
-        </p>
-      </b-col>
-      <b-col cols="12" md="5">
-        <b-card title="Create your account">
+    <b-row class="center" align-h="center">
+      <b-col cols="12" md="8" lg="5">
+        <b-card title="Reset your password">
           <b-card-text>
-            It's free and quick.
+            Enter the email address you used to register and we will
+            email you a recovery code to reset your password.
           </b-card-text>
           <b-form class="mt-5" @submit="onSubmit">
             <b-form-input
@@ -22,24 +16,15 @@
               required
               class="input"
             />
-            <b-form-input
-              id="password"
-              v-model="password"
-              placeholder="Password"
-              type="password"
-              required
-              class="input"
-            />
-            <small>By clicking "Sign Up", you agree to our terms of use and privacy policy.</small>
             <b-button block type="submit" class="button" variant="success">
-              Sign Up
+              Email me a recovery code
             </b-button>
           </b-form>
           <hr>
           <b-card-text>
-            Already have an account?
+            Back to
             <NuxtLink to="/signin" class="link">
-              Sign In.
+              Sign In
             </NuxtLink>
           </b-card-text>
         </b-card>
@@ -52,8 +37,7 @@
 export default {
   data () {
     return {
-      email: '',
-      password: ''
+      email: ''
     }
   },
   methods: {

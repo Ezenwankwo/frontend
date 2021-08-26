@@ -1,47 +1,40 @@
 <template class="page">
   <b-container>
-    <b-row class="center">
-      <b-col cols="12" md="7">
-        <p>
-          Townsmeet is where you connect and engage with the people, businesses
-          and public authorities in your town. Have conversations about what
-          affects you where you live, work, school and trade.
-        </p>
-      </b-col>
-      <b-col cols="12" md="5">
-        <b-card title="Create your account">
+    <b-row class="center" align-h="center">
+      <b-col cols="12" md="8" lg="5">
+        <b-card title="Create your profile">
           <b-card-text>
-            It's free and quick.
+            What do we call you?
           </b-card-text>
           <b-form class="mt-5" @submit="onSubmit">
             <b-form-input
-              id="email"
-              v-model="email"
-              placeholder="Email"
-              type="email"
+              id="first"
+              v-model="firstName"
+              placeholder="First name"
+              type="text"
               required
               class="input"
             />
             <b-form-input
-              id="password"
-              v-model="password"
-              placeholder="Password"
-              type="password"
+              id="last"
+              v-model="lastName"
+              placeholder="Last name"
+              type="text"
               required
               class="input"
             />
-            <small>By clicking "Sign Up", you agree to our terms of use and privacy policy.</small>
+            <b-form-input
+              id="user"
+              v-model="userName"
+              placeholder="Username"
+              type="text"
+              required
+              class="input"
+            />
             <b-button block type="submit" class="button" variant="success">
-              Sign Up
+              Continue
             </b-button>
           </b-form>
-          <hr>
-          <b-card-text>
-            Already have an account?
-            <NuxtLink to="/signin" class="link">
-              Sign In.
-            </NuxtLink>
-          </b-card-text>
         </b-card>
       </b-col>
     </b-row>
@@ -52,8 +45,9 @@
 export default {
   data () {
     return {
-      email: '',
-      password: ''
+      firstName: '',
+      lastName: '',
+      userName: ''
     }
   },
   methods: {
