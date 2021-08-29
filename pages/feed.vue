@@ -1,6 +1,6 @@
 <template class="page">
   <b-container>
-    <b-row class="center" align-h="center">
+    <b-row align-v="center" align-h="center" class="vh-100">
       <b-col cols="12" md="8" lg="5">
         <b-card title="Welcome to your feed">
           <b-card-text>
@@ -46,9 +46,6 @@ export default {
 <style>
 .page {
   background-color: #E5E5E5;
-}
-.center {
-  margin-top: 100px;
 }
 .link {
   color: #489B16;

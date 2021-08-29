@@ -1,6 +1,6 @@
 <template class="page">
   <b-container>
-    <b-row class="center">
+    <b-row align-v="center" align-h="center" class="vh-100">
       <b-col cols="12" md="7">
         <h1 class="display-4">
           Where people live.
@@ -84,9 +84,6 @@ export default {
 <style>
 .page {
   background-color: #e5e5e5;
-}
-.center {
-  margin-top: 100px;
 }
 .link {
   color: #489b16;
