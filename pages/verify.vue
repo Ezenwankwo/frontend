@@ -4,9 +4,9 @@
       <b-col cols="12" md="8" lg="5">
         <b-card title="Verify your email">
           <b-card-text>
-            Enter the verification code we sent to your email.
+            Enter the verification code we sent to your email <span class="font-italic">{{ email }}</span>
           </b-card-text>
-          <b-form class="mt-5" @submit="onSubmit">
+          <b-form class="mt-5" @submit.prevent="onSubmit">
             <b-form-input
               id="code"
               v-model="code"
@@ -35,12 +35,30 @@
 <script>
 export default {
   data () {
+    // const emailAddress = localStorage.getItem('email')
+    const emailAddress = this.$cookies.get('email')
     return {
-      code: ''
+      code: '',
+      email: emailAddress
     }
   },
   methods: {
-    onSubmit () {}
+    async onSubmit () {
+      const token = this.code
+      // const emailAddress = localStorage.getItem('email')
+      const emailAddress = this.$cookies.get('email')
+      try {
+        const res = await this.$http.$get(
+          `https://tmapi-test.herokuapp.com/user/verify/${emailAddress}/${token}/`
+        )
+        const userId = res.user_id
+        // localStorage.setItem('userId', userId)
+        this.$cookies.set('userId', userId)
+        this.$router.push('/createprofile')
+      } catch (e) {
+        this.error = 'Invalid token'
+      }
+    }
   }
 }
 </script>

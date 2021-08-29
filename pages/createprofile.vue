@@ -6,7 +6,7 @@
           <b-card-text>
             What do we call you?
           </b-card-text>
-          <b-form class="mt-5" @submit="onSubmit">
+          <b-form class="mt-5" @submit.prevent="onSubmit">
             <b-form-input
               id="first"
               v-model="firstName"
@@ -51,24 +51,41 @@ export default {
     }
   },
   methods: {
-    onSubmit () {}
+    async onSubmit () {
+      // const userId = localStorage.getItem('userId')
+      const userId = this.$cookies.get('userId')
+      try {
+        await this.$http.$post(
+          'https://tmapi-test.herokuapp.com/user/personal/',
+          {
+            user: userId,
+            first_name: this.firstName,
+            last_name: this.lastName,
+            username: this.userName
+          }
+        )
+        this.$router.push('/moreprofile')
+      } catch (e) {
+        this.error = 'Profile creation failed'
+      }
+    }
   }
 }
 </script>
 
 <style>
 .page {
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 .center {
   margin-top: 100px;
 }
 .link {
-  color: #489B16;
+  color: #489b16;
   text-decoration: none;
 }
 .button {
-  background-color: #489B16;
+  background-color: #489b16;
   border: 0;
   height: 50px;
   font-weight: 400;

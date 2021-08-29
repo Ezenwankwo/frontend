@@ -2,32 +2,23 @@
   <b-container>
     <b-row class="center" align-h="center">
       <b-col cols="12" md="8" lg="5">
-        <b-card title="Spice up your profile">
+        <b-card title="Follow your town">
           <b-card-text>
-            Show and tell people in your town something unique about yourself.
+            We define towns as representing local government areas or council areas(FCT)
+            You can follow a maximum of 5 towns.
           </b-card-text>
           <b-form class="mt-5" @submit.prevent="onSubmit">
-            <b-form-file
-              id="avatar"
-              v-model="avatar"
-              placeholder="Choose profile photo"
-            />
-            <b-form-textarea
-              id="bio"
-              v-model="bio"
-              size="lg"
-              placeholder="Bio"
+            <b-form-input
+              id="town"
+              v-model="email"
+              placeholder="Find your town"
+              type="search"
+              required
               class="input"
             />
             <b-button block type="submit" class="button" variant="success">
-              Continue
+              Follow town
             </b-button>
-            <hr>
-            <b-card-text class="text-center">
-              <NuxtLink to="/findtown" class="link">
-                Skip for now
-              </NuxtLink>
-            </b-card-text>
           </b-form>
         </b-card>
       </b-col>
@@ -39,8 +30,7 @@
 export default {
   data () {
     return {
-      avatar: null,
-      bio: ''
+      email: ''
     }
   },
   methods: {

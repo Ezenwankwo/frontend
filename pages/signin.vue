@@ -6,7 +6,7 @@
           <b-card-text>
             Connect with your town.
           </b-card-text>
-          <b-form class="mt-5" @submit="onSubmit">
+          <b-form class="mt-5" @submit.prevent="onSubmit">
             <b-form-input
               id="email"
               v-model="email"
@@ -52,7 +52,24 @@ export default {
     }
   },
   methods: {
-    onSubmit () {}
+    async onSubmit () {
+      try {
+        this.$http.setHeader('Authorization', false)
+        const res = await this.$http.$post(
+          'https://tmapi-test.herokuapp.com/auth/token/login/',
+          {
+            email: this.email,
+            password: this.password
+          }
+        )
+        const token = res.auth_token
+        this.$cookies.set('token', token)
+        this.$cookies.set('email', this.email)
+        this.$router.push('/feed')
+      } catch (e) {
+        this.error = 'Login failed'
+      }
+    }
   }
 }
 </script>

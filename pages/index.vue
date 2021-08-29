@@ -2,7 +2,10 @@
   <b-container>
     <b-row class="center">
       <b-col cols="12" md="7">
-        <p>
+        <h1 class="display-4">
+          Where people live.
+        </h1>
+        <p class="my-5 pr-lg-5">
           Townsmeet is where you connect and engage with the people, businesses
           and public authorities in your town. Have conversations about what
           affects you where you live, work, school and trade.
@@ -13,7 +16,7 @@
           <b-card-text>
             It's free and quick.
           </b-card-text>
-          <b-form class="mt-5" @submit="onSubmit">
+          <b-form class="mt-5" @submit.prevent="onSubmit">
             <b-form-input
               id="email"
               v-model="email"
@@ -30,7 +33,8 @@
               required
               class="input"
             />
-            <small>By clicking "Sign Up", you agree to our terms of use and privacy policy.</small>
+            <small>By clicking "Sign Up", you agree to our terms of use and privacy
+              policy.</small>
             <b-button block type="submit" class="button" variant="success">
               Sign Up
             </b-button>
@@ -57,24 +61,39 @@ export default {
     }
   },
   methods: {
-    onSubmit () {}
+    async onSubmit () {
+      try {
+        await this.$http.$post(
+          'https://tmapi-test.herokuapp.com/auth/users/',
+          {
+            email: this.email,
+            password: this.password
+          }
+        )
+        // localStorage.setItem('email', this.email)
+        this.$cookies.set('email', this.email)
+        this.$router.push('/verify')
+      } catch (e) {
+        this.error = 'Signup failed'
+      }
+    }
   }
 }
 </script>
 
 <style>
 .page {
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 .center {
   margin-top: 100px;
 }
 .link {
-  color: #489B16;
+  color: #489b16;
   text-decoration: none;
 }
 .button {
-  background-color: #489B16;
+  background-color: #489b16;
   border: 0;
   height: 50px;
   font-weight: 400;
