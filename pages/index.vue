@@ -2,13 +2,12 @@
   <b-container>
     <b-row align-v="center" align-h="center" class="vh-100">
       <b-col cols="12" md="7">
-        <h1 class="display-4">
+        <h1 class="mt-5">
           Where people live.
         </h1>
         <p class="my-5 pr-lg-5">
           Townsmeet is where you connect and engage with the people, businesses
-          and public authorities in your town. Have conversations about what
-          affects you where you live, work, school and trade.
+          and public authorities in your town.
         </p>
       </b-col>
       <b-col cols="12" md="5">

@@ -2,15 +2,22 @@
   <b-container>
     <b-row align-v="center" align-h="center" class="vh-100">
       <b-col cols="12" md="8" lg="5">
-        <b-card title="Follow your town">
+        <b-card title="Follow another town">
           <b-card-text v-show="tapped === ''">
-            We define towns as representing local government areas or council areas(FCT)
-            You can follow a maximum of 5 towns.
+            You can follow {{ `${5 - numTowns}` }} more towns that are dear to you.
           </b-card-text>
+          <b-list-group v-for="town in userTowns" v-show="tapped === ''" :key="town.id">
+            <b-list-group-item class="d-flex justify-content-between align-items-center">
+              {{ town }}
+              <b-button variant="success" size="sm">
+                Following
+              </b-button>
+            </b-list-group-item>
+          </b-list-group>
           <b-form-input
             v-model="tapped"
             list="towns"
-            placeholder="Find your town"
+            placeholder="Find another town"
             type="search"
             class="input"
             @change="onChange"
@@ -20,6 +27,11 @@
               {{ town.name }}, {{ town.state }}
             </option>
           </datalist>
+          <b-card-text v-show="tapped === ''" class="text-center">
+            <NuxtLink to="/followedtowns" class="link">
+              Skip for now
+            </NuxtLink>
+          </b-card-text>
           <div v-show="tapped != ''">
             <p>How are you connected to this town?</p>
             <b-form-radio-group>
@@ -77,10 +89,14 @@ export default {
     return { towns }
   },
   data () {
+    const usertowns = this.$cookies.get('userTowns')
+    const numtowns = usertowns.length
     return {
       tapped: '',
       selected: '',
-      category: ''
+      category: '',
+      userTowns: usertowns,
+      numTowns: numtowns
     }
   },
   methods: {
@@ -93,11 +109,17 @@ export default {
       const category = this.category
       try {
         this.$http.setHeader('Authorization', false)
-        const userTowns = await this.$http.$get(
+        const usertowns = await this.$http.$get(
             `https://tmapi-test.herokuapp.com/town/follow-town/${userId}/${town}/${category}`
         )
-        this.$cookies.set('userTowns', userTowns)
-        this.$router.push('/findmoretown')
+        this.$cookies.set('userTowns', usertowns)
+        if (usertowns.length >= 5) {
+          this.$router.push('/followedtowns')
+        } else {
+          this.tapped = ''
+          this.userTowns = usertowns
+          this.numTowns = usertowns.length
+        }
       } catch (e) {
         this.error = 'failed to follow town'
       }
