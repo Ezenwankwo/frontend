@@ -54,6 +54,11 @@ export default {
     }
   },
 
+  bootstrapVue: {
+    // Install the `IconsPlugin` plugin (in addition to `BootstrapVue` plugin)
+    icons: true
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }

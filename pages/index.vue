@@ -69,7 +69,6 @@ export default {
             password: this.password
           }
         )
-        // localStorage.setItem('email', this.email)
         this.$cookies.set('email', this.email)
         this.$router.push('/verify')
       } catch (e) {

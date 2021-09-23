@@ -1,73 +1,55 @@
-<template class="page">
-  <b-container>
-    <b-row align-v="center" align-h="center" class="vh-100">
-      <b-col cols="12" md="8" lg="5">
-        <b-card title="Welcome to your feed">
-          <b-card-text>
-            You are signed in as {{ email }}
-          </b-card-text>
-          <b-link href="#" class="text-center link my-5" @click="signout">
-            Sign out
-          </b-link>
-        </b-card>
-      </b-col>
-    </b-row>
-  </b-container>
+<template>
+  <b-col cols="5" class="px-0">
+    <div class="border-bottom p-3 mx-0 h5">
+      Home
+    </div>
+    <div>
+      <b-media tag="li" class="px-3 py-0">
+        <template #aside>
+          <b-img src="/profile.png" width="42" alt="placeholder" />
+        </template>
+        <h6 class="my-0">
+          <a class="link" href="#">Safety</a> in <a class="link" href="#">Abaji</a>, 1h ago.
+        </h6>
+        <small class="my-0">
+          Augustus Ezenwankwo
+          <b-badge class="badge" pill>
+            R
+          </b-badge>
+          | @crassitametnibh
+        </small>
+        <p class="mt-2 mb-3">
+          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+          Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc
+          ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </p>
+        <p class="d-flex justify-content-between my-0 mr-5">
+          <span><b-icon icon="chat-left" /> 0</span>
+          <span><b-icon icon="heart" /> 0</span>
+          <span><b-icon icon="share" /></span>
+          <span><b-icon icon="info-circle" /></span>
+        </p>
+      </b-media>
+      <hr>
+    </div>
+  </b-col>
 </template>
 
 <script>
 export default {
-  data () {
-    // const emailAddress = localStorage.getItem('email')
-    const emailAddress = this.$cookies.get('email')
-    return {
-      email: emailAddress
-    }
-  },
-  methods: {
-    async signout () {
-      const token = this.$cookies.get('token')
-      try {
-        this.$http.setHeader('Authorization', `Token ${token}`)
-        await this.$http.$post(
-          'https://tmapi-test.herokuapp.com/auth/token/logout'
-        )
-        this.$cookies.remove('email')
-        this.$cookies.remove('token')
-        this.$router.push('/signin')
-      } catch {
-        this.error = 'signout failed'
-      }
-    }
-  }
+  layout: 'user'
 }
 </script>
 
 <style>
-.page {
-  background-color: #E5E5E5;
-}
 .link {
   color: #489B16;
-  text-decoration: none;
+  text-decoration: none !important;
 }
-.button {
+.link:hover {
+  color: #489B16;
+}
+.badge {
   background-color: #489B16;
-  border: 0;
-  height: 50px;
-  font-weight: 400;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.input {
-  display: block;
-  width: 100%;
-  height: 50px;
-  padding: 1.1rem;
-  margin: 20px 0px 20px 0px;
-  color: #464a4c;
-  border: 1px solid #e6ecf5;
-  border-radius: 3px;
 }
 </style>

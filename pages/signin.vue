@@ -56,7 +56,7 @@ export default {
       try {
         this.$http.setHeader('Authorization', false)
         const res = await this.$http.$post(
-          'https://tmapi-test.herokuapp.com/auth/token/login/',
+          'http://127.0.0.1:8000/auth/token/login/',
           {
             email: this.email,
             password: this.password
