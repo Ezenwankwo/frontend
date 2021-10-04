@@ -41,7 +41,7 @@
           <hr>
           <b-card-text>
             Already have an account?
-            <NuxtLink to="/signin" class="link">
+            <NuxtLink to="/login" class="link">
               Sign In.
             </NuxtLink>
           </b-card-text>

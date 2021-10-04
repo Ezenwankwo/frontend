@@ -33,8 +33,8 @@
           <hr>
           <b-card-text>
             New to townsmeet?
-            <NuxtLink to="/" class="link">
-              Sign Up.
+            <NuxtLink to="/" class="login">
+              Sign Up
             </NuxtLink>
           </b-card-text>
         </b-card>
@@ -54,20 +54,18 @@ export default {
   methods: {
     async onSubmit () {
       try {
-        this.$http.setHeader('Authorization', false)
-        const res = await this.$http.$post(
-          'http://127.0.0.1:8000/auth/token/login/',
+        const res = await this.$axios.$post('/user/api-token-auth/',
           {
             email: this.email,
             password: this.password
           }
         )
-        const token = res.auth_token
-        this.$cookies.set('token', token)
-        this.$cookies.set('email', this.email)
+        this.$cookies.set('userId', res.user_id)
+        this.$cookies.set('userToken', res.token)
+        this.$cookies.set('userEmail', res.email)
         this.$router.push('/feed')
-      } catch (e) {
-        this.error = 'Login failed'
+      } catch {
+        this.error = 'failed'
       }
     }
   }
@@ -78,9 +76,9 @@ export default {
 .page {
   background-color: #E5E5E5;
 }
-.link {
+.login {
   color: #489B16;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .button {
   background-color: #489B16;

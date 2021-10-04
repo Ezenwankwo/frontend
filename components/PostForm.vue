@@ -1,52 +1,57 @@
 <template>
-  <b-col cols="4" class="border-left px-5">
-    <p class="lead text-center my-5">
-      Post to your towns
-    </p>
-    <b-form @submit.prevent="createPost">
-      <b-form-select
-        v-model="town"
-        :options="towns"
-        size="lg"
-        value-field="id"
-        text-field="name"
-        class="input"
-      >
-        <template #first>
-          <b-form-select-option :value="''" disabled>
-            -- Choose town --
-          </b-form-select-option>
-        </template>
-      </b-form-select>
-      <b-form-select
-        v-model="category"
-        :options="categories"
-        size="lg"
-        class="input"
-      >
-        <template #first>
-          <b-form-select-option :value="''" disabled>
-            -- Choose category --
-          </b-form-select-option>
-        </template>
-      </b-form-select>
-      <b-form-textarea
-        id="textarea-large"
-        v-model="body"
-        size="lg"
-        placeholder="Write your post here..."
-        rows="6"
-        class="input"
-      />
-      <b-form-file
-        v-model="file"
-        placeholder="Upload image or video..."
-        drop-placeholder="Drop file here..."
-      />
-      <b-button pill block type="submit" class="button" variant="success">
-        Create Post
-      </b-button>
-    </b-form>
+  <b-col cols="4" class="border-left pl-5 pr-0 mr-0">
+    <div style="position: fixed;" class="mr-0 pr-0">
+      <p class="lead text-center my-5 font-weight-normal">
+        Post to your town
+      </p>
+      <b-form @submit.prevent="createPost">
+        <b-form-select
+          v-model="town"
+          :options="towns"
+          size="lg"
+          value-field="id"
+          text-field="name"
+          class="input"
+          required
+        >
+          <template #first>
+            <b-form-select-option :value="''" disabled>
+              -- Choose town --
+            </b-form-select-option>
+          </template>
+        </b-form-select>
+        <b-form-select
+          v-model="category"
+          :options="categories"
+          size="lg"
+          class="input"
+          required
+        >
+          <template #first>
+            <b-form-select-option :value="''" disabled>
+              -- Choose category --
+            </b-form-select-option>
+          </template>
+        </b-form-select>
+        <b-form-textarea
+          id="textarea-large"
+          v-model="body"
+          size="lg"
+          placeholder="Write your post here..."
+          rows="6"
+          class="input"
+          required
+        />
+        <b-form-file
+          v-model="file"
+          placeholder="Upload image or video..."
+          drop-placeholder="Drop file here..."
+        />
+        <b-button pill block type="submit" class="button" variant="success">
+          Create Post
+        </b-button>
+      </b-form>
+    </div>
   </b-col>
 </template>
 
@@ -58,41 +63,37 @@ export default {
       towns: [],
       category: '',
       categories: [
-        { value: 'SEC', text: 'Send security alert' },
-        { value: 'REC', text: 'Ask for recommendation' },
-        { value: 'CIV', text: 'Discuss a civic issue' },
-        { value: 'SEA', text: 'Find places, apartments, jobs, etc' },
-        { value: 'NEW', text: 'Report an incident' },
-        { value: 'USE', text: 'Sell Used Item' }
+        { value: 'Security', text: 'Send security alert' },
+        { value: 'Recommendation', text: 'Ask for recommendation' },
+        { value: 'Civic Engagement', text: 'Discuss a civic issue' },
+        { value: 'Searching', text: 'Find places, apartments, jobs, etc' },
+        { value: 'News', text: 'Report an incident' },
+        { value: 'Used Item', text: 'Sell Used Item' }
       ],
       body: '',
       file: null
     }
   },
   async fetch () {
-    this.towns = await this.$http.$get('http://127.0.0.1:8000/town/all/')
+    this.towns = await this.$axios.$get('/town/all/')
   },
   methods: {
     async createPost () {
-      const token = this.$cookies.get('token')
-      // const user = this.$cookies.get('user_id')
-      try {
-        this.$http.setHeader('Authorization', `Token ${token}`)
-        await this.$http.$post(
-          'http://127.0.0.1:8000/feed/home/',
-          {
-            my_user: '2',
-            town: this.town,
-            category: this.category,
-            body: this.body
-          }
-        )
-        this.town = ''
-        this.category = ''
-        this.body = ''
-      } catch {
-        this.error = 'post creattion failed'
-      }
+      const token = this.$cookies.get('userToken')
+      const userId = this.$cookies.get('userId')
+      this.$axios.setHeader('Authorization', `Token ${token}`)
+      await this.$axios.$post(
+        '/feed/posts/',
+        {
+          my_user: userId,
+          town: this.town,
+          category: this.category,
+          body: this.body
+        }
+      )
+      this.town = ''
+      this.category = ''
+      this.body = ''
     }
   }
 }

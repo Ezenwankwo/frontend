@@ -1,45 +1,60 @@
 <template>
   <b-col cols="3" class="border-right px-5">
-    <div class="pt-5">
+    <div class="pt-5" style="position: fixed;">
       <b-img src="/logo.png" alt="logo" class="pl-3" />
       <b-list-group class="my-5 py-4 border-0">
-        <b-list-group-item to="feed" class="py-3 border-0 h4 nav-item">
+        <b-list-group-item to="/feed" class="py-3 border-0 h4 nav-item">
           <b-icon icon="house-door" class="mr-3" />
           Home
         </b-list-group-item>
-        <b-list-group-item to="towns" class="py-3 border-0 h4 nav-item">
+        <b-list-group-item to="/towns" class="py-3 border-0 h4 nav-item">
           <b-icon icon="geo-alt" class="mr-3" />
           Towns
         </b-list-group-item>
-        <b-list-group-item to="explore" class="py-3 border-0 h4 nav-item">
+        <b-list-group-item to="/explore/trending" class="py-3 border-0 h4 nav-item">
           <b-icon icon="search" class="mr-3" />
           Explore
         </b-list-group-item>
-        <b-list-group-item to="notification" class="py-3 border-0 h4 nav-item">
+        <b-list-group-item to="/notifications" class="py-3 border-0 h4 nav-item">
           <b-icon icon="bell" class="mr-3" />
           Notification
-        </b-list-group-item>
-        <b-list-group-item to="profile" class="py-3 border-0 h4 nav-item">
-          <b-icon icon="person" class="mr-3" />
-          Profile
         </b-list-group-item>
       </b-list-group>
       <b-media class="pl-3 mb-0 pb-0">
         <template #aside>
-          <b-img
-            src="/profile.png"
-            rounded="circle"
-            width="42"
-            alt="placeholder"
-          />
+          <NuxtLink :to="`/profiles/${profile.user}/posts`">
+            <b-img
+              v-if="profile.profile_photo == null"
+              src="/profile.png"
+              rounded="circle"
+              width="42"
+              alt="placeholder"
+            />
+            <b-img
+              v-else
+              :src="profile.profile_photo"
+              rounded="circle"
+              width="42"
+              alt="placeholder"
+            />
+          </NuxtLink>
         </template>
-        <h6 class="mt-0 mb-0">
-          Daniel Ugah
-        </h6>
-        <small class="mt-0">
-          @crassitametnibh
-        </small>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <NuxtLink :to="`/profiles/${profile.user}/posts`" class="profile">
+              <h6 class="mt-0 mb-0">
+                {{ profile.first_name }} {{ profile.last_name }}
+              </h6>
+              <small class="mt-0">
+                @{{ profile.username }}
+              </small>
+            </NuxtLink>
+          </div>
+        </div>
       </b-media>
+      <b-button size="sm" variant="outline-info" class="signout mt-5 ml-3" @click="logOut">
+        <b-icon icon="power" aria-hidden="true" />
+      </b-button>
     </div>
   </b-col>
 </template>
@@ -48,7 +63,24 @@
 export default {
   data () {
     return {
-      hover: false
+      hover: false,
+      profile: {}
+    }
+  },
+  async fetch () {
+    try {
+      const id = this.$cookies.get('userId')
+      const token = this.$cookies.get('userToken')
+      this.$axios.setHeader('Authorization', `Token ${token}`)
+      this.profile = await this.$axios.$get(`/user/personal/${id}`)
+    } catch {
+      this.error = 'failed'
+    }
+  },
+  methods: {
+    logOut () {
+      this.$cookies.removeAll()
+      this.$router.push('/login')
     }
   }
 }
@@ -62,5 +94,18 @@ export default {
 .nav-item:hover {
   background-color: #489B16;
   color: white;
+}
+.signout {
+  background-color: white;
+  color: inherit;
+  border-color: #489B16;
+}
+.signout:hover {
+  background-color: #489B16;
+}
+.profile {
+  color: #000 !important;
+  text-decoration: none !important;
+  background-color: inherit;
 }
 </style>
