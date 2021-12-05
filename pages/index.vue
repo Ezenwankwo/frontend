@@ -1,24 +1,8 @@
 <template class="page">
-  <b-container>
+  <b-container class="my-5">
     <b-row align-v="center" align-h="center" class="vh-100">
       <b-col cols="12" md="7">
-        <vue-typed-js
-          :type-speed="100"
-          :strings="[
-            'Townsmeet is where people live.',
-            'Receive and send security alerts in your town.',
-            'Ask for recommendations in your town.',
-            'Find places, apartments, artisans and professionals in your town.',
-            'Find customers in your town.',
-            'Find and post jobs in your town.',
-            'Engage with public authorities in your town.',
-            'Discuss civic issues in your town',
-            'Sell used items in your town.',
-            'Join your town.'
-          ]"
-        >
-          <h1 class="typing mt-5" />
-        </vue-typed-js>
+        <h1>Where People Live.</h1>
         <p class="my-5 pr-lg-5 lead font-weight-normal">
           Townsmeet is where you connect and engage with the people, businesses
           and public authorities in your town.
