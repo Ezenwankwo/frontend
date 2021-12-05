@@ -72,8 +72,8 @@
 
 <script>
 export default {
-  async asyncData ({ $http }) {
-    const towns = await $http.$get('https://tmapi-test.herokuapp.com/town/all/')
+  async asyncData ({ $axios }) {
+    const towns = await $axios.$get('/town/all/')
     return { towns }
   },
   data () {
@@ -89,12 +89,13 @@ export default {
     },
     async followType () {
       const userId = this.$cookies.get('userId')
+      const token = this.$cookies.get('userToken')
       const town = this.selected.split(',')[0]
       const category = this.category
       try {
-        this.$http.setHeader('Authorization', false)
-        const userTowns = await this.$http.$get(
-            `https://tmapi-test.herokuapp.com/town/follow-town/${userId}/${town}/${category}`
+        this.$axios.setHeader('Authorization', `Token ${token}`)
+        const userTowns = await this.$axios.$get(
+            `/town/follow-town/${userId}/${town}/${category}`
         )
         this.$cookies.set('userTowns', userTowns)
         this.$router.push('/findmoretown')

@@ -3,8 +3,8 @@
     <b-media tag="li" class="px-3 py-0">
       <template #aside>
         <NuxtLink :to="`/profiles/${user}/profile`">
-          <b-img v-if="photo == null" src="/profile.png" width="42" alt="placeholder" />
-          <b-img v-else :src="photo" width="42" alt="placeholder" />
+          <b-img v-if="photo == null" src="/profile.png" rounded="circle" width="42" alt="placeholder" />
+          <b-img v-else :src="photo" rounded="circle" width="42" alt="placeholder" />
         </NuxtLink>
       </template>
       <h6 class="my-0">
@@ -30,9 +30,9 @@
           </NuxtLink>
         </span>
         <span>
-          <b-icon v-if="likes.includes(authuser)" icon="heart-fill" />
-          <b-icon v-else icon="heart" />
-          {{ nolikes }}
+          <b-icon v-if="likes.includes(authuser)" :icon="likedIcon" class="mr-2" @click.prevent="liked(commentid)" />
+          <b-icon v-else :icon="unlikedIcon" class="mr-2" @click.prevent="unliked(commentid)" />
+          {{ noLikes }}
         </span>
         <span><b-icon icon="share" /></span>
         <span><b-icon icon="info-circle" /></span>
@@ -60,6 +60,49 @@ export default {
     nolikes: { type: Number, default: 0 },
     likes: { type: Array, default: () => [] },
     photo: { type: String, default: '' }
+  },
+  data () {
+    return {
+      likedIcon: 'heart-fill',
+      unlikedIcon: 'heart',
+      noLikes: this.nolikes
+    }
+  },
+  methods: {
+    async liked (commentid) {
+      const userId = this.$cookies.get('userId')
+      const token = this.$cookies.get('userToken')
+      try {
+        this.$axios.setHeader('Authorization', `Token ${token}`)
+        const res = await this.$axios.get(`/feed/like_comment/${userId}/${commentid}/`)
+        if (res.status === 200) {
+          this.likedIcon = 'heart'
+          this.noLikes = res.data.num_likes
+        } else {
+          this.likedIcon = 'heart-fill'
+          this.noLikes = res.data.num_likes
+        }
+      } catch {
+        this.error = 'action failed'
+      }
+    },
+    async unliked (commentid) {
+      const userId = this.$cookies.get('userId')
+      const token = this.$cookies.get('userToken')
+      try {
+        this.$axios.setHeader('Authorization', `Token ${token}`)
+        const res = await this.$axios.get(`/feed/like_comment/${userId}/${commentid}/`)
+        if (res.status === 201) {
+          this.unlikedIcon = 'heart-fill'
+          this.noLikes = res.data.num_likes
+        } else {
+          this.unlikedIcon = 'heart'
+          this.noLikes = res.data.num_likes
+        }
+      } catch {
+        this.error = 'action failed'
+      }
+    }
   }
 }
 </script>

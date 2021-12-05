@@ -1,7 +1,10 @@
 <template>
-  <b-col cols="5" class="px-0">
-    <div class="border-bottom p-3 mx-0 h6">
-      <GoBack />Home
+  <b-col sm="12" md="9" lg="5" class="px-0">
+    <div class="border-bottom p-3 mx-0 h6 d-flex justify-content-between">
+      <div class="mt-2">
+        <GoBack />Home
+      </div>
+      <CreatePost />
     </div>
     <Post
       v-for="post in posts"
@@ -38,7 +41,7 @@ export default {
   async fetch () {
     const token = this.$cookies.get('userToken')
     this.$axios.setHeader('Authorization', `Token ${token}`)
-    this.posts = await this.$axios.$get('http://127.0.0.1:8000/feed/posts/')
+    this.posts = await this.$axios.$get('/feed/posts/')
   }
 }
 </script>

@@ -1,14 +1,17 @@
 <template>
-  <b-col cols="5" class="px-0">
-    <div class="border-bottom p-3 mx-0 h6">
-      <GoBack />Post
+  <b-col sm="12" md="9" lg="5" class="px-0">
+    <div class="border-bottom p-3 mx-0 h6 d-flex justify-content-between">
+      <div class="mt-2">
+        <GoBack />Post
+      </div>
+      <CreatePost />
     </div>
     <div class="border-bottom mb-0 pb-2">
       <b-media tag="li" class="px-3 py-0">
         <template #aside>
           <NuxtLink :to="`/profiles/${post.my_user}/profile`">
-            <b-img v-if="post.myuserprofile.profile_photo == null" src="/profile.png" width="42" alt="placeholder" />
-            <b-img v-else :src="post.myuserprofile.profile_photo" width="42" alt="placeholder" />
+            <b-img v-if="post.myuserprofile.profile_photo == null" src="/profile.png" rounded="circle" width="42" alt="placeholder" />
+            <b-img v-else :src="post.myuserprofile.profile_photo" rounded="circle" width="42" alt="placeholder" />
           </NuxtLink>
         </template>
         <h6 class="my-0">
@@ -54,7 +57,7 @@
       :body="comment.body"
       :nolikes="comment.num_of_likes"
       :nocomments="comment.num_of_comments"
-      :like="comment.likes"
+      :likes="comment.likes"
       :photo="comment.myuserprofile.profile_photo"
       :postid="comment.post.id"
       :authuser="userID"

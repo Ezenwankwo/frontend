@@ -23,6 +23,7 @@
               required
               class="input"
             />
+            <Message v-if="error" :message="error" />
             <b-form-input
               id="user"
               v-model="userName"
@@ -47,16 +48,18 @@ export default {
     return {
       firstName: '',
       lastName: '',
-      userName: ''
+      userName: '',
+      error: null
     }
   },
   methods: {
     async onSubmit () {
-      // const userId = localStorage.getItem('userId')
       const userId = this.$cookies.get('userId')
+      const token = this.$cookies.get('userToken')
       try {
-        await this.$http.$post(
-          'https://tmapi-test.herokuapp.com/user/personal/',
+        this.$axios.setHeader('Authorization', `Token ${token}`)
+        const res = await this.$axios.$post(
+          '/user/personal/',
           {
             user: userId,
             first_name: this.firstName,
@@ -64,9 +67,10 @@ export default {
             username: this.userName
           }
         )
+        this.$cookies.set('userName', res.username)
         this.$router.push('/moreprofile')
       } catch (e) {
-        this.error = 'Profile creation failed'
+        this.error = 'Username is taken'
       }
     }
   }

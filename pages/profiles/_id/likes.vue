@@ -1,7 +1,10 @@
 <template>
-  <b-col cols="5" class="px-0">
-    <div class="border-bottom p-3 mx-0 h6">
-      <GoBack />Profile
+  <b-col sm="12" md="9" lg="5" class="px-0">
+    <div class="border-bottom p-3 mx-0 h6 d-flex justify-content-between">
+      <div class="mt-2">
+        <GoBack />Profile
+      </div>
+      <CreatePost />
     </div>
     <div class="border-0 p-3 mx-0">
       <b-media class="pl-3 mb-0 pb-0">
@@ -55,9 +58,6 @@
         </b-nav-item>
         <b-nav-item to="likes">
           Likes
-        </b-nav-item>
-        <b-nav-item to="bookmarks">
-          Bookmarks
         </b-nav-item>
       </b-nav>
     </div>

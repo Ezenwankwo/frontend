@@ -1,8 +1,8 @@
 <template>
-  <b-col cols="3" class="border-right px-5">
+  <b-col md="3" class="border-right px-5 d-none d-md-block">
     <div class="pt-5" style="position: fixed;">
       <b-img src="/logo.png" alt="logo" class="pl-3" />
-      <b-list-group class="my-5 py-4 border-0">
+      <b-list-group class="my-5 py-4 border-0 d-none d-lg-block">
         <b-list-group-item to="/feed" class="py-3 border-0 h4 nav-item">
           <b-icon icon="house-door" class="mr-3" />
           Home
@@ -18,6 +18,20 @@
         <b-list-group-item to="/notifications" class="py-3 border-0 h4 nav-item">
           <b-icon icon="bell" class="mr-3" />
           Notification
+        </b-list-group-item>
+      </b-list-group>
+      <b-list-group class="my-5 py-4 border-0 w-50 d-lg-none">
+        <b-list-group-item to="/feed" class="py-3 border-0 h2 nav-item">
+          <b-icon icon="house-door" class="mr-3" />
+        </b-list-group-item>
+        <b-list-group-item to="/towns" class="py-3 border-0 h2 nav-item">
+          <b-icon icon="geo-alt" class="mr-3" />
+        </b-list-group-item>
+        <b-list-group-item to="/explore/trending" class="py-3 border-0 h2 nav-item">
+          <b-icon icon="search" class="mr-3" />
+        </b-list-group-item>
+        <b-list-group-item to="/notifications" class="py-3 border-0 h2 nav-item">
+          <b-icon icon="bell" class="mr-3" />
         </b-list-group-item>
       </b-list-group>
       <b-media class="pl-3 mb-0 pb-0">
@@ -39,7 +53,7 @@
             />
           </NuxtLink>
         </template>
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center d-none d-md-none d-lg-block">
           <div>
             <NuxtLink :to="`/profiles/${profile.user}/posts`" class="profile">
               <h6 class="mt-0 mb-0">
@@ -86,14 +100,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .nuxt-link-active {
-  color: white;
-  background-color: #489B16;
+  color: #489B16 !important;
+  background-color: white;
 }
 .nav-item:hover {
-  background-color: #489B16;
-  color: white;
+  color: #489B16;
 }
 .signout {
   background-color: white;

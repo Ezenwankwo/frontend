@@ -40,6 +40,7 @@ export default {
           body: this.text
         }
       )
+      this.text = ''
     }
   }
 }

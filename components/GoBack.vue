@@ -1,5 +1,5 @@
 <template>
-  <b-icon icon="arrow-left" class="mr-3" @click="goBack" />
+  <b-icon icon="arrow-left" class="mr-3 goback" @click="goBack" />
 </template>
 
 <script>
@@ -11,3 +11,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.goback {
+  color: #489B16;
+}
+</style>

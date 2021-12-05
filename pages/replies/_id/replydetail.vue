@@ -1,14 +1,17 @@
 <template>
-  <b-col cols="5" class="px-0">
-    <div class="border-bottom p-3 mx-0 h6">
-      <GoBack />Reply
+  <b-col sm="12" md="9" lg="5" class="px-0">
+    <div class="border-bottom p-3 mx-0 h6 d-flex justify-content-between">
+      <div class="mt-2">
+        <GoBack />Reply
+      </div>
+      <CreatePost />
     </div>
     <div class="border-bottom mb-0 pb-2">
       <b-media tag="li" class="px-3 py-0">
         <template #aside>
           <NuxtLink :to="`/profiles/${reply.my_user}/profile`">
-            <b-img v-if="reply.myuserprofile.profile_photo == null" src="/profile.png" width="42" alt="placeholder" />
-            <b-img v-else :src="reply.myuserprofile.profile_photo" width="42" alt="placeholder" />
+            <b-img v-if="reply.myuserprofile.profile_photo == null" src="/profile.png" rounded="circle" width="42" alt="placeholder" />
+            <b-img v-else :src="reply.myuserprofile.profile_photo" rounded="circle" width="42" alt="placeholder" />
           </NuxtLink>
         </template>
         <h6 class="my-0">
@@ -31,7 +34,7 @@
         <p class="d-flex justify-content-between my-0 mr-5 lead">
           <span><b-icon icon="chat-left" class="mr-2" /> {{ reply.num_of_comments }}</span>
           <span>
-            <b-icon v-if="reply.likes.includes(userID)" icon="heart-fill" class="mr-2" @click.prevent="liked()" />
+            <b-icon v-if="reply.likes.includes(userID)" :icon="likedIcon" class="mr-2" @click.prevent="liked()" />
             <b-icon v-else :icon="unlikedIcon" class="mr-2" @click.prevent="unliked()" />
             {{ reply.num_of_likes }}
           </span>
@@ -57,7 +60,7 @@
       :body="comment.body"
       :nolikes="comment.num_of_likes"
       :nocomments="comment.num_of_comments"
-      :like="comment.likes"
+      :likes="comment.likes"
       :photo="comment.myuserprofile.profile_photo"
       :postid="comment.post"
       :commentid="comment.id"

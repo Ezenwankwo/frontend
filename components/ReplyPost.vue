@@ -3,8 +3,8 @@
     <b-media tag="li" class="px-3 py-0">
       <template #aside>
         <NuxtLink :to="`/profiles/${user}/profile`">
-          <b-img v-if="photo == null" src="/profile.png" width="42" alt="placeholder" />
-          <b-img v-else :src="photo" width="42" alt="placeholder" />
+          <b-img v-if="photo == null" src="/profile.png" rounded="circle" width="42" alt="placeholder" />
+          <b-img v-else :src="photo" rounded="circle" width="42" alt="placeholder" />
         </NuxtLink>
       </template>
       <h6 class="my-0">

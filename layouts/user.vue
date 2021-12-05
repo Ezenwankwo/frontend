@@ -4,6 +4,7 @@
       <MainNav />
       <Nuxt />
       <PostForm />
+      <MobileNav />
     </b-row>
   </b-container>
 </template>

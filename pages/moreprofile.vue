@@ -7,11 +7,18 @@
             Show and tell people in your town something unique about yourself.
           </b-card-text>
           <b-form class="mt-5" @submit.prevent="onSubmit">
-            <b-form-file
-              id="avatar"
-              v-model="avatar"
-              placeholder="Choose profile photo"
-            />
+            <no-ssr>
+              <file-pond
+                ref="pond"
+                name="filepond"
+                label-idle="upload image here..."
+                :allow-multiple="false"
+                accepted-file-types="image/jpeg, image/jpg, image/png"
+                server="https://tmapi-test.herokuapp.com/fp/process/"
+                image-crop-aspect-ratio="1:1"
+                @processfile="serverResponse"
+              />
+            </no-ssr>
             <b-form-textarea
               id="bio"
               v-model="bio"
@@ -22,13 +29,13 @@
             <b-button block type="submit" class="button" variant="success">
               Continue
             </b-button>
-            <hr>
-            <b-card-text class="text-center">
-              <NuxtLink to="/findtown" class="link">
-                Skip for now
-              </NuxtLink>
-            </b-card-text>
           </b-form>
+          <hr>
+          <b-card-text class="text-center">
+            <NuxtLink to="/findtown" class="link">
+              Skip for now
+            </NuxtLink>
+          </b-card-text>
         </b-card>
       </b-col>
     </b-row>
@@ -36,15 +43,56 @@
 </template>
 
 <script>
+import vueFilePond from 'vue-filepond'
+import 'filepond/dist/filepond.min.css'
+
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
+
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type'
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop'
+
+const FilePond = vueFilePond(
+  FilePondPluginFileValidateType,
+  FilePondPluginImagePreview,
+  FilePondPluginImageCrop
+)
+
 export default {
+  components: {
+    FilePond
+  },
   data () {
     return {
-      avatar: null,
-      bio: ''
+      upload_id: '',
+      bio: '',
+      error: null
     }
   },
   methods: {
-    onSubmit () {}
+    serverResponse (error, file) {
+      if (error) {
+        return false
+      } else {
+        this.upload_id = file.serverId
+      }
+    },
+    async onSubmit () {
+      const username = this.$cookies.get('userName')
+      const token = this.$cookies.get('userToken')
+      try {
+        this.$axios.setHeader('Authorization', `Token ${token}`)
+        await this.$axios.patch(
+          `/user/moreprofile/${username}/${this.upload_id}/`,
+          {
+            bio: this.bio
+          }
+        )
+        this.$router.push('/findtown')
+      } catch (e) {
+        this.error = 'failed to update profile.'
+      }
+    }
   }
 }
 </script>
@@ -75,5 +123,11 @@ export default {
   color: #464a4c;
   border: 1px solid #e6ecf5;
   border-radius: 3px;
+}
+img {
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 </style>

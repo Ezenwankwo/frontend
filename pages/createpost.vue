@@ -1,6 +1,11 @@
 <template>
-  <b-col lg="4" class="border-left pl-5 pr-0 mr-0 d-none d-lg-block">
-    <div style="position: fixed;" class="mr-0 pr-0">
+  <b-col sm="12" md="9" class="px-0">
+    <div class="border-bottom p-3 mx-0 h6 d-flex justify-content-between">
+      <div class="mt-2">
+        <GoBack />Create Post
+      </div>
+    </div>
+    <div class="px-5">
       <p class="lead text-center my-5 font-weight-normal">
         Post to your town
       </p>
@@ -57,6 +62,7 @@
 
 <script>
 export default {
+  layout: 'user',
   data () {
     return {
       town: '',

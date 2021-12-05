@@ -35,28 +35,34 @@
 <script>
 export default {
   data () {
-    // const emailAddress = localStorage.getItem('email')
-    const emailAddress = this.$cookies.get('email')
+    const email = this.$cookies.get('userEmail')
     return {
       code: '',
-      email: emailAddress
+      email
     }
   },
   methods: {
     async onSubmit () {
       const token = this.code
-      // const emailAddress = localStorage.getItem('email')
-      const emailAddress = this.$cookies.get('email')
+      const email = this.$cookies.get('userEmail')
+      const password = this.$cookies.get('userPassword')
       try {
-        const res = await this.$http.$get(
-          `https://tmapi-test.herokuapp.com/user/verify/${emailAddress}/${token}/`
+        await this.$axios.$get(
+          `/user/verify/${email}/${token}/`
         )
-        const userId = res.user_id
-        // localStorage.setItem('userId', userId)
-        this.$cookies.set('userId', userId)
+        const user = await this.$axios.$post(
+          '/user/api-token-auth/',
+          {
+            email,
+            password
+          }
+        )
+        this.$cookies.set('userId', user.user_id)
+        this.$cookies.set('userToken', user.token)
+        this.$cookies.remove('userPassword')
         this.$router.push('/createprofile')
       } catch (e) {
-        this.error = 'Invalid token'
+        this.error = 'failed'
       }
     }
   }

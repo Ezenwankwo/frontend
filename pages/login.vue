@@ -7,6 +7,7 @@
             Connect with your town.
           </b-card-text>
           <b-form class="mt-5" @submit.prevent="onSubmit">
+            <Message v-if="error" :message="error" />
             <b-form-input
               id="email"
               v-model="email"
@@ -33,7 +34,7 @@
           <hr>
           <b-card-text>
             New to townsmeet?
-            <NuxtLink to="/" class="login">
+            <NuxtLink to="/" class="link">
               Sign Up
             </NuxtLink>
           </b-card-text>
@@ -48,13 +49,15 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: null
     }
   },
   methods: {
     async onSubmit () {
       try {
-        const res = await this.$axios.$post('/user/api-token-auth/',
+        const res = await this.$axios.$post(
+          '/user/api-token-auth/',
           {
             email: this.email,
             password: this.password
@@ -65,7 +68,7 @@ export default {
         this.$cookies.set('userEmail', res.email)
         this.$router.push('/feed')
       } catch {
-        this.error = 'failed'
+        this.error = 'Login failed. check that your email and password are correct'
       }
     }
   }
@@ -76,9 +79,9 @@ export default {
 .page {
   background-color: #E5E5E5;
 }
-.login {
-  color: #489B16;
-  text-decoration: none !important;
+.link {
+  color: #489b16;
+  text-decoration: none;
 }
 .button {
   background-color: #489B16;

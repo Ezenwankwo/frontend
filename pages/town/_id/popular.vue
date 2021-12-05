@@ -1,7 +1,10 @@
 <template>
-  <b-col cols="5" class="px-0">
-    <div class="border-bottom mb-0 p-3 mx-0 h6">
-      <GoBack />{{ town.name }}, {{ town.state }}
+  <b-col sm="12" md="9" lg="5" class="px-0">
+    <div class="border-bottom p-3 mx-0 h6 d-flex justify-content-between">
+      <div class="mt-2">
+        <GoBack />{{ town.name }} {{ town.state }}
+      </div>
+      <CreatePost />
     </div>
     <div class="d-flex flex-wrap p-3 mx-0">
       <b-button pill class="town-item mt-2 mr-2">
@@ -34,6 +37,25 @@
         Popular
       </b-nav-item>
     </b-nav>
+    <Post
+      v-for="post in posts"
+      :key="post.id"
+      :category="post.category"
+      :town="post.town_name"
+      :user="post.my_user"
+      :created="post.created_at"
+      :firstname="post.myuserprofile.first_name"
+      :lastname="post.myuserprofile.last_name"
+      :following="post.following.category"
+      :username="post.myuserprofile.username"
+      :body="post.body"
+      :nolikes="post.num_of_likes"
+      :nocomments="post.num_of_comments"
+      :likes="post.likes"
+      :photo="post.myuserprofile.profile_photo"
+      :postid="post.id"
+      :authuser="userID"
+    />
   </b-col>
 </template>
 
@@ -47,7 +69,14 @@ export default {
     return { town }
   },
   data () {
-    return {}
+    return {
+      posts: []
+    }
+  },
+  async fetch () {
+    const token = this.$cookies.get('userToken')
+    this.$axios.setHeader('Authorization', `Token ${token}`)
+    this.posts = await this.$axios.$get(`/feed/town/${this.town.id}/popular`)
   }
 }
 </script>

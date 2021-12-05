@@ -1,7 +1,10 @@
 <template>
-  <b-col cols="5" class="px-0">
-    <div class="border-bottom mb-0 p-3 mx-0 h6">
-      <GoBack />Towns
+  <b-col sm="12" md="9" lg="5" class="px-0">
+    <div class="border-bottom p-3 mx-0 h6 d-flex justify-content-between">
+      <div class="mt-2">
+        <GoBack />Post
+      </div>
+      <CreatePost />
     </div>
     <div>
       <b-list-group v-for="follower in followers" :key="follower.id">
