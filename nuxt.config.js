@@ -43,7 +43,7 @@ export default {
 
     '@nuxtjs/dayjs',
 
-    'cooke-universal-nuxt',
+    'cookie-universal-nuxt',
 
     'vue-toastification/nuxt'
 
