@@ -1,41 +1,48 @@
 <script>
 export default {
-  data() {
+  data () {
     return {
-      imageSrc: "/images/img1.jpg", // reference to the profile picture URL
-    }    
+      imageSrc: '/images/img1.jpg' // reference to the profile picture URL
+    }
   },
 
   methods: {
-    handleImage() {
-      const imageInput = this.$refs.imageInput; // reference to the file input
-      const imageURL = URL.createObjectURL(imageInput.files[0]);
+    handleImage () {
+      const imageInput = this.$refs.imageInput // reference to the file input
+      const imageURL = URL.createObjectURL(imageInput.files[0])
 
-      this.imageSrc = imageURL;
+      this.imageSrc = imageURL
     }
   }
 }
 
 // Initially the profile picture of the user would be fetched from an API.
-// But on save (or on exit, like WhatsApp) the newly selected image would 
+// But on save (or on exit, like WhatsApp) the newly selected image would
 // be saved and the new image would replace the old one.
 
 // I have not been able to implement the resizing of the image yet.
-// All this does is preview the image 
+// All this does is preview the image
 </script>
 
 <template>
   <div>
     <div class="profile">
       <a :href="imageSrc" class="profile__picture">
-        <img :src="imageSrc" alt="user avatar" />
+        <img :src="imageSrc" alt="user avatar">
       </a>
       <div class="profile__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>        
-        <input type="file" ref="imageInput" accept="image/*" @change="handleImage">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1.5rem"
+          height="1.5rem"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="{2}" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="{2}" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <input ref="imageInput" type="file" accept="image/*" @change="handleImage">
       </div>
     </div>
   </div>
