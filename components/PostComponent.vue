@@ -6,7 +6,7 @@ export default {
   data () {
     return {
       url: '',
-      resObj: {}
+      resObj: null
     }
   },
   methods: {
@@ -32,8 +32,11 @@ export default {
         const document = convertBodyToDocument(res.data)
         const mappedProperties = mapProperties(xpaths, document)
         return mappedProperties
-        // eslint-disable-next-line no-console
-      }).then((res) => { this.resObj = JSON.stringify(res) }).catch((err) => { console.log(err) })
+      }).then((res) => {
+        const jsonResponse = JSON.stringify(res)
+        this.resObj = JSON.parse(jsonResponse)
+      // eslint-disable-next-line no-console
+      }).catch((err) => { console.log(err) })
     }
   }
 }
@@ -42,6 +45,7 @@ export default {
 <template>
   <div>
     <section class="text-center m-12">
+      <h1 class="mb-5 text-xl text-blue-800 font-semibold">Open Graph Scraper</h1>
       <input v-model="url" type="text" class="border-2 border-black w-1/2 h-12">
       <span>
         <button
@@ -50,17 +54,18 @@ export default {
         >Submit</button>
       </span>
     </section>
-    <pre v-if="resObj !== ''" class="og">
-      {{ resObj }}
-    </pre>
-    <section class="flex w-3/5 mx-auto border-2 rounded-lg shadow-md">
+    <section v-if="resObj" class="flex w-3/5 mx-auto border-2 rounded-lg shadow-md">
       <div>
-        <img src="https://picsum.photos/400" alt="" class="object-contain rounded-lg">
+        <img :src="resObj.image" alt="" class="object-contain rounded-lg">
       </div>
       <div class="ml-3">
-        <p class="text-xl font-medium mt-5 mb-1">Lorem Ipsum Dolor Sit Amet <span>&#8226;</span> <span class="text-blue-600 text-sm">freeCodeCamp.org</span></p>
-        <p class="mb-2">Irure elit est laborum velit duis veniam adipisicing. Ullamco ut nisi tempor culpa sit veniam labore irure anim dolor. Nisi labore nisi consectetur consectetur sunt ullamco ea quis aliqua laborum esse duis tempor. Ipsum cillum dolor esse Lorem minim occaecat et.</p>
-        <a href="https://picsum.photos/20" class="cursor-pointer text-blue-500">https://picsum.photos/200</a>
+        <p class="text-xl font-medium mt-5 mb-1">
+          {{ resObj.title }} <span>&#8226;</span> <span class="text-blue-600 text-sm">{{resObj.site_name}}</span>
+        </p>
+        <p class="mb-2">
+          {{ resObj.description }}
+        </p>
+        <a :href="resObj.url" class="cursor-pointer text-blue-500" target="_blank">View Post in Browser</a>
       </div>
     </section>
   </div>
