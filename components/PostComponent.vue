@@ -55,17 +55,17 @@ export default {
       </span>
     </section>
     <section v-if="resObj" class="flex w-3/5 mx-auto border-2 rounded-lg shadow-md">
-      <div>
-        <img :src="resObj.image" alt="" class="object-contain rounded-lg">
+      <div class="w-1/2">
+        <img :src="resObj.image" alt="" class="object-cover rounded-lg h-full">
       </div>
-      <div class="ml-3">
+      <div class="ml-3 p-4">
         <p class="text-xl font-medium mt-5 mb-1">
-          {{ resObj.title }} <span>&#8226;</span> <span class="text-blue-600 text-sm">{{resObj.site_name}}</span>
+          {{ resObj.title }} <span>&#8226;</span> <span class="text-blue-600 text-sm">{{ resObj.site_name }}</span>
         </p>
         <p class="mb-2">
           {{ resObj.description }}
         </p>
-        <a :href="resObj.url" class="cursor-pointer text-blue-500" target="_blank">View Post in Browser</a>
+        <a :href="resObj.url" class="cursor-pointer text-blue-500 p-2" target="_blank">View Post in Browser</a>
       </div>
     </section>
   </div>
