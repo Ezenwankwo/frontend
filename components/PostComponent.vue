@@ -45,7 +45,9 @@ export default {
 <template>
   <div>
     <section class="text-center m-12">
-      <h1 class="mb-5 text-xl text-blue-800 font-semibold">Open Graph Scraper</h1>
+      <h1 class="mb-5 text-xl text-blue-800 font-semibold">
+        Open Graph Scraper
+      </h1>
       <input v-model="url" type="text" class="border-2 border-black w-1/2 h-12">
       <span>
         <button
@@ -54,18 +56,26 @@ export default {
         >Submit</button>
       </span>
     </section>
-    <section v-if="resObj" class="flex w-3/5 mx-auto border-2 rounded-lg shadow-md">
-      <div class="w-1/2">
-        <img :src="resObj.image" alt="" class="object-cover rounded-lg h-full">
+    <section
+      v-if="resObj"
+      class="flex flex-col w-3/5 mx-auto md:flex-row overflow-hidden
+                                        bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2"
+    >
+      <!-- media -->
+      <div class="h-64 w-auto md:w-1/2">
+        <img class="inset-0 h-full w-full object-cover object-center" :src="resObj.image">
       </div>
-      <div class="ml-3 p-4">
-        <p class="text-xl font-medium mt-5 mb-1">
-          {{ resObj.title }} <span>&#8226;</span> <span class="text-blue-600 text-sm">{{ resObj.site_name }}</span>
-        </p>
-        <p class="mb-2">
+      <!-- content -->
+      <div class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
+        <h3 class="font-semibold text-lg leading-tight truncate">
+          {{ resObj.title }}
+        </h3>
+        <p class="mt-2">
           {{ resObj.description }}
         </p>
-        <a :href="resObj.url" class="cursor-pointer text-blue-500 p-2" target="_blank">View Post in Browser</a>
+        <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
+          {{ resObj.site_name }}
+        </p>
       </div>
     </section>
   </div>
