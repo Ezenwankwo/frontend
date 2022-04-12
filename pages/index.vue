@@ -1,5 +1,5 @@
 <template>
-  <Profile />
+  <PostComponent />
 </template>
 
 <script>

@@ -1,0 +1,20 @@
+{
+    "name": "townsmeet-frontend",
+    "env": {
+        "HOST": {
+            "description": "listen host",
+            "value": "0.0.0.0"
+        }
+    },
+    "formation": {
+        "web": {
+            "quantity": 1
+        }
+    },
+    "image": "heroku/nodejs",
+    "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+        }
+    ]
+}
