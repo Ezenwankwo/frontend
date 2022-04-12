@@ -1,3 +1,42 @@
+<template>
+  <div>
+    <section class="text-center m-12">
+      <h1 class="mb-5 text-xl text-blue-800 font-semibold">
+        Open Graph Scraper
+      </h1>
+      <input v-model="url" type="text" class="border-2 border-black w-1/2 h-12">
+      <span>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded"
+          @click="fetchOGP"
+        >Submit</button>
+      </span>
+    </section>
+    <section
+      v-if="resObj"
+      class="flex flex-col w-3/5 mx-auto md:flex-row overflow-hidden
+                                        bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2"
+    >
+      <!-- media -->
+      <div class="h-64 w-auto md:w-1/2">
+        <img class="inset-0 h-full w-full object-cover object-center" :src="resObj.image">
+      </div>
+      <!-- content -->
+      <div class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
+        <h3 class="font-semibold text-lg leading-tight truncate">
+          {{ resObj.title }}
+        </h3>
+        <p class="mt-2">
+          {{ resObj.description }}
+        </p>
+        <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
+          {{ resObj.site_name }}
+        </p>
+      </div>
+    </section>
+  </div>
+</template>
+
 <script>
 import xpath from 'xpath'
 import { DOMParser } from 'xmldom'
@@ -41,45 +80,6 @@ export default {
   }
 }
 </script>
-
-<template>
-  <div>
-    <section class="text-center m-12">
-      <h1 class="mb-5 text-xl text-blue-800 font-semibold">
-        Open Graph Scraper
-      </h1>
-      <input v-model="url" type="text" class="border-2 border-black w-1/2 h-12">
-      <span>
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded"
-          @click="fetchOGP"
-        >Submit</button>
-      </span>
-    </section>
-    <section
-      v-if="resObj"
-      class="flex flex-col w-3/5 mx-auto md:flex-row overflow-hidden
-                                        bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2"
-    >
-      <!-- media -->
-      <div class="h-64 w-auto md:w-1/2">
-        <img class="inset-0 h-full w-full object-cover object-center" :src="resObj.image">
-      </div>
-      <!-- content -->
-      <div class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
-        <h3 class="font-semibold text-lg leading-tight truncate">
-          {{ resObj.title }}
-        </h3>
-        <p class="mt-2">
-          {{ resObj.description }}
-        </p>
-        <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
-          {{ resObj.site_name }}
-        </p>
-      </div>
-    </section>
-  </div>
-</template>
 
 <style scoped>
 </style>
