@@ -32,6 +32,11 @@ export default {
     '@nuxtjs/tailwindcss'
   ],
 
+  //
+  eslint: {
+    fix: true
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -45,7 +50,9 @@ export default {
 
     'cookie-universal-nuxt',
 
-    'vue-toastification/nuxt'
+    'vue-toastification/nuxt',
+
+    '@nuxtjs/google-fonts'
 
   ],
 
@@ -64,6 +71,18 @@ export default {
     manifest: {
       lang: 'en'
     }
+  },
+
+  // Google font
+  googleFonts: {
+    families: {
+      Lato: {
+        wght: [100, 300, 400, 700, 900],
+        ital: [100, 300, 400, 700, 900]
+      },
+    },
+    display: 'swap',
+    subsets: 'greek',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
