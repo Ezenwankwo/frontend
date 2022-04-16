@@ -58,6 +58,7 @@
                     "
                 >Blog</a>
                 <NuxtLink
+                  v-show="$route.path != '/log-in'"
                   to="/log-in"
                   class="
                       ml-4
@@ -79,6 +80,7 @@
                   Login
                 </NuxtLink>
                 <NuxtLink
+                  v-show="$route.path != '/sign-up'"
                   to="/sign-up"
                   class="
                       ml-4
@@ -110,7 +112,8 @@
                   justify-center
                   p-2
                   rounded-md
-                  text-tm-green
+                  text-white
+                  bg-tm-green
                   hover:text-white hover:bg-tm-green
                   focus:outline-none focus:bg-tm-green focus:text-white
                 "
@@ -194,7 +197,8 @@
                 focus:outline-none focus:text-green-900
               "
             >Blog</a>
-            <a
+            <NuxtLink
+              v-show="$route.path != '/log-in'"
               to="/log-in"
               class="
                 px-3
@@ -211,8 +215,11 @@
                 hover:outline-none hover:bg-tm-green hover:text-white
                 focus:outline-none focus:text-white focus:bg-green-900
               "
-            >Login</a>
-            <a
+            >
+              Login
+            </NuxtLink>
+            <NuxtLink
+              v-show="$route.path != '/sign-up'"
               to="/sign-up"
               class="
                 px-3
@@ -229,7 +236,9 @@
                 hover:outline-none hover:text-white
                 focus:outline-none focus:text-white focus:bg-green-900
               "
-            >Signup</a>
+            >
+              Signup
+            </NuxtLink>
           </div>
         </div>
       </nav>

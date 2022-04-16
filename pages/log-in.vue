@@ -1,7 +1,7 @@
 <template>
-  <div class="container mx-auto px-8 lg:px-12 columns-10 py-12 grid md:grid-cols-2">
+  <div class="container mx-auto px-4 lg:px-12 columns-10 py-8 md:py-12 grid md:grid-cols-2">
     <div>
-      <div class="text-tm-black text-3xl lg:pb-12 pb-6 font-medium">
+      <div class="text-tm-black text-2xl md:text-3xl lg:pb-12 pb-6 font-medium">
         Login to <span class="text-tm-green">stay connected</span> with your
         community.
       </div>
