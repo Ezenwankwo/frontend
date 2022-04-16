@@ -57,8 +57,8 @@
                       focus:outline-none focus:text-green-900
                     "
                 >Blog</a>
-                <a
-                  href="#"
+                <NuxtLink
+                  to="/log-in"
                   class="
                       ml-4
                       px-3
@@ -70,12 +70,16 @@
                       border-2
                       border-tm-green
                       bg-tm-gray
+                      rounded
+                      shadow-md
                       hover:outline-tm-green hover:text-white hover:bg-tm-green
                       focus:outline-tm-green focus:text-white focus:bg-green-900
                     "
-                >Login</a>
-                <a
-                  href="#"
+                >
+                  Login
+                </NuxtLink>
+                <NuxtLink
+                  to="/sign-up"
                   class="
                       ml-4
                       px-3
@@ -87,10 +91,14 @@
                       border-2
                       border-tm-green
                       bg-tm-green
+                      rounded
+                      shadow-md
                       hover:outline-none hover:text-white
                       focus:outline-none focus:text-white focus:bg-green-900
                     "
-                >Signup</a>
+                >
+                  Signup
+                </NuxtLink>
               </div>
             </div>
             <div class="-mr-2 flex md:hidden">
@@ -198,6 +206,8 @@
                 bg-tm-gray
                 border
                 border-tm-green
+                rounded
+                shadow-md
                 hover:outline-none hover:bg-tm-green hover:text-white
                 focus:outline-none focus:text-white focus:bg-green-900
               "
@@ -214,6 +224,8 @@
                 bg-tm-green
                 border
                 border-tm-green
+                rounded
+                shadow-md
                 hover:outline-none hover:text-white
                 focus:outline-none focus:text-white focus:bg-green-900
               "
