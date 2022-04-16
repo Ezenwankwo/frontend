@@ -3,16 +3,16 @@
     <div>
       <div class="text-tm-black text-2xl md:text-3xl lg:pb-12 pb-6 font-medium">
         Login to <span class="text-tm-green">stay connected</span> with your
-        community.
+        townspeople.
       </div>
       <div class="md:hidden mx-auto lg:pb-12 pb-6">
-        <img src="~/assets/community.png" class="object-contain mx-auto">
+        <img src="~/assets/community.svg" class="object-contain mx-auto">
       </div>
       <div class="mb-3 lg:w-96">
         <label
           for="exampleEmail0"
           class="form-label inline-block mb-2 text-tm-black"
-        >Enter email address</label>
+        >Email address</label>
         <input
           id="exampleEmail0"
           type="email"
@@ -112,7 +112,7 @@
       </p>
     </div>
     <div class="hidden md:block">
-      <img src="~/assets/community.png" class="object-contain">
+      <img src="~/assets/community.svg" class="object-fit">
     </div>
   </div>
 </template>
