@@ -1,11 +1,11 @@
 <template>
-  <div class="container mx-auto px-8 columns-10 py-12 grid md:grid-cols-2">
+  <div class="container mx-auto px-8 lg:px-12 columns-10 py-12 grid md:grid-cols-2">
     <div>
-      <div class="text-tm-black text-3xl pb-12 font-medium">
+      <div class="text-tm-black text-3xl lg:pb-12 pb-6 font-medium">
         Login to <span class="text-tm-green">stay connected</span> with your
         community.
       </div>
-      <div class="md:hidden mx-auto">
+      <div class="md:hidden mx-auto lg:pb-12 pb-6">
         <img src="~/assets/community.png" class="object-contain mx-auto">
       </div>
       <div class="mb-3 lg:w-96">
@@ -17,7 +17,6 @@
           id="exampleEmail0"
           type="email"
           class="
-              block
               w-full
               px-3
               py-3
@@ -44,7 +43,6 @@
           id="examplePassword0"
           type="password"
           class="
-              block
               w-full
               px-3
               py-3
@@ -62,14 +60,14 @@
             "
         >
       </div>
-      <div class="text-sm text-red-400 mt-0 text-right w-96">
+      <div class="text-sm text-red-400 mt-0 text-right lg:w-96 w-full">
         Forgot password?
       </div>
       <button
         type="button"
         class="
-          w-full
           lg:w-96
+          w-full
           mt-3
           py-3
           bg-tm-green

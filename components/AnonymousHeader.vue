@@ -195,7 +195,7 @@
               "
             >Blog</a>
             <a
-              href="#"
+              to="/log-in"
               class="
                 px-3
                 py-2
@@ -213,7 +213,7 @@
               "
             >Login</a>
             <a
-              href="#"
+              to="/sign-up"
               class="
                 px-3
                 py-2
