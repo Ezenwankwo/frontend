@@ -22,12 +22,12 @@
               py-3
               text-base
               font-normal
-              text-gray-700
+              text-tm-black
               bg-white bg-clip-padding
               border border-solid border-tm-gray
               rounded
               m-0
-              focus:text-gray-700
+              focus:text-tm-black
               focus:bg-white
               focus:border-tm-green
               focus:outline-none
@@ -48,21 +48,23 @@
               py-3
               text-base
               font-normal
-              text-gray-700
+              text-tm-black
               bg-white bg-clip-padding
               border border-solid border-tm-gray
               rounded
               m-0
-              focus:text-gray-700
+              focus:text-tm-black
               focus:bg-white
               focus:border-tm-green
               focus:outline-none
             "
         >
       </div>
-      <div class="text-sm text-red-400 mt-0 text-right lg:w-96 w-full">
-        Forgot password?
-      </div>
+      <NuxtLink to="/password-reset">
+        <div class="text-sm text-red-400 mt-0 text-right lg:w-96 w-full">
+          Forgot password?
+        </div>
+      </NuxtLink>
       <button
         type="button"
         class="
@@ -111,7 +113,7 @@
         </NuxtLink>
       </p>
     </div>
-    <div class="hidden md:block">
+    <div class="hidden md:block m-auto">
       <img src="~/assets/community.svg" class="object-fit">
     </div>
   </div>
