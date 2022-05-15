@@ -15,10 +15,12 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/icons.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -29,12 +31,15 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
 
   //
   eslint: {
     fix: true
+  },
+  rules: {
+    'vue/multi-word-component-names': 'off',
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -52,8 +57,9 @@ export default {
 
     'vue-toastification/nuxt',
 
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
 
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -87,5 +93,33 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+    transpile: [
+      'vee-validate/dist/rules'
+    ]
+  },
+
+  // Global auth settings for nuxt-next
+  router: {
+    middleware: ['auth']
+  },
+  auth: {
+    strategies: {
+      google: {
+        clientId: '67108109230-5o0nu8juetk7424bqlcumphvivu20336.apps.googleusercontent.com',
+        scope: ['profile', 'email'],
+        codeChallengeMethod: '',
+        responseType: 'id_token',
+        endpoints: {
+          token: 'http://127.0.0.1:8000/api/users/user/google_signin', // somm backend url to resolve your auth with google and give you the token back
+          // userInfo: 'http://localhost:8000/auth/user/' // the endpoint to get the user info after you recived the token 
+        },
+      },
+    },
+    redirect: {
+      login: '/log-in',
+      logout: '/',
+      callback: '/town-feed',
+      home: '/town-feed'
+    }
+  },
 }

@@ -13,52 +13,60 @@
           for="exampleEmail0"
           class="form-label inline-block mb-2 text-tm-black"
         >Email address</label>
-        <input
-          id="exampleEmail0"
-          type="email"
-          class="
-              w-full
-              px-3
-              py-3
-              text-base
-              font-normal
-              text-tm-black
-              bg-white bg-clip-padding
-              border border-solid border-tm-gray
-              rounded
-              m-0
-              focus:text-tm-black
-              focus:bg-white
-              focus:border-tm-green
-              focus:outline-none
-            "
-        >
+        <ValidationProvider v-slot="{ errors }" rules="required|email">
+          <input
+            id="email"
+            v-model.trim="form.email"
+            type="email"
+            class="
+                w-full
+                px-3
+                py-3
+                text-base
+                font-normal
+                text-tm-black
+                bg-white bg-clip-padding
+                border border-solid border-tm-gray
+                rounded
+                m-0
+                focus:text-tm-black
+                focus:bg-white
+                focus:border-tm-green
+                focus:outline-none
+              "
+          >
+          <span class="text-sm text-red-400">{{ errors[0] }}</span>
+        </ValidationProvider>
       </div>
       <div class="mb-3 lg:w-96">
         <label
           for="examplePassword0"
           class="form-label inline-block mb-2 text-tm-black"
         >Password</label>
-        <input
-          id="examplePassword0"
-          type="password"
-          class="
-              w-full
-              px-3
-              py-3
-              text-base
-              font-normal
-              text-tm-black
-              bg-white bg-clip-padding
-              border border-solid border-tm-gray
-              rounded
-              m-0
-              focus:text-tm-black
-              focus:bg-white
-              focus:border-tm-green
-              focus:outline-none
-            "
-        >
+        <ValidationProvider v-slot="{ errors }" rules="required|min:8">
+          <input
+            id="password"
+            v-model.trim="form.password"
+            type="password"
+            class="
+                w-full
+                px-3
+                py-3
+                text-base
+                font-normal
+                text-tm-black
+                bg-white bg-clip-padding
+                border border-solid border-tm-gray
+                rounded
+                m-0
+                focus:text-tm-black
+                focus:bg-white
+                focus:border-tm-green
+                focus:outline-none
+              "
+          >
+          <span class="text-sm text-red-400">{{ errors[0] }}</span>
+        </ValidationProvider>
       </div>
       <div class="text-sm text-tm-black m-0">
         I agree to the <NuxtLink to="/log-in">
@@ -106,6 +114,7 @@
           hover:bg-tm-green hover:shadow-lg hover:text-white
           focus:bg-green-900 focus:shadow-lg focus:outline-none focus:text-white
         "
+        @click="loginWithGoogle()"
       >
         Signup with Google
       </button>
@@ -122,7 +131,40 @@
 </template>
 
 <script>
+import { ValidationProvider, extend } from 'vee-validate'
+import { required, email, min } from 'vee-validate/dist/rules'
+
+extend('email', {
+  ...email,
+  message: 'this field must be a valid email'
+})
+extend('required', {
+  ...required,
+  message: 'this field is required'
+})
+extend('min', {
+  ...min,
+  message: 'this field must have at least 8 characters'
+})
 export default {
-  layout: 'AnonymousUser'
+  auth: false,
+  components: {
+    ValidationProvider
+  },
+  layout: 'AnonymousUser',
+  data () {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    async onSubmit () {},
+    loginWithGoogle () {
+      this.$auth.loginWith('google')
+    }
+  }
 }
 </script>

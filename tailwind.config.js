@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         'tm-black': '#28475C',
         'tm-gray': '#DAE0DB',
-        'tm-green': '#16836E',
+        'tm-green': '#13846E',
       },
       fontFamily: {
         sans: ['Lato', 'sans-serif'],

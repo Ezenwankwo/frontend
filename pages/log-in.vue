@@ -8,83 +8,93 @@
       <div class="md:hidden mx-auto lg:pb-12 pb-6">
         <img src="~/assets/community.svg" class="object-contain mx-auto">
       </div>
-      <div class="mb-3 lg:w-96">
-        <label
-          for="exampleEmail0"
-          class="form-label inline-block mb-2 text-tm-black"
-        >Email address</label>
-        <input
-          id="exampleEmail0"
-          type="email"
-          class="
-              w-full
-              px-3
-              py-3
-              text-base
-              font-normal
-              text-tm-black
-              bg-white bg-clip-padding
-              border border-solid border-tm-gray
-              rounded
-              m-0
-              focus:text-tm-black
-              focus:bg-white
-              focus:border-tm-green
-              focus:outline-none
-            "
-        >
-      </div>
-      <div class="mb-0 lg:w-96">
-        <label
-          for="examplePassword0"
-          class="form-label inline-block mb-2 text-tm-black"
-        >Password</label>
-        <input
-          id="examplePassword0"
-          type="password"
-          class="
-              w-full
-              px-3
-              py-3
-              text-base
-              font-normal
-              text-tm-black
-              bg-white bg-clip-padding
-              border border-solid border-tm-gray
-              rounded
-              m-0
-              focus:text-tm-black
-              focus:bg-white
-              focus:border-tm-green
-              focus:outline-none
-            "
-        >
-      </div>
-      <NuxtLink to="/password-reset">
-        <div class="text-sm text-red-400 mt-0 text-right lg:w-96 w-full">
-          Forgot password?
+      <form novalidate @submit.prevent="onSubmit">
+        <div class="mb-3 lg:w-96">
+          <label
+            for="email"
+            class="form-label inline-block mb-2 text-tm-black"
+          >Email address</label>
+          <ValidationProvider v-slot="{ errors }" rules="required|email">
+            <input
+              id="email"
+              v-model.trim="form.email"
+              type="email"
+              class="
+                  w-full
+                  px-3
+                  py-3
+                  text-base
+                  font-normal
+                  text-tm-black
+                  bg-white bg-clip-padding
+                  border border-solid border-tm-gray
+                  rounded
+                  m-0
+                  focus:text-tm-black
+                  focus:bg-white
+                  focus:border-tm-green
+                  focus:outline-none
+                "
+            >
+            <span class="text-sm text-red-400">{{ errors[0] }}</span>
+          </ValidationProvider>
         </div>
-      </NuxtLink>
-      <button
-        type="button"
-        class="
-          lg:w-96
-          w-full
-          mt-3
-          py-3
-          bg-tm-green
-          text-white
-          font-medium
-          text-lg
-          leading-normal
-          rounded
-          shadow-md
-          hover:bg-green-900 hover:shadow-lg
-          focus:bg-green-900 focus:shadow-lg focus:outline-none
-        "
-      >
-        Login
-      </button>
+        <div class="mb-0 lg:w-96">
+          <label
+            for="examplePassword0"
+            class="form-label inline-block mb-2 text-tm-black"
+          >Password</label>
+          <ValidationProvider v-slot="{ errors }" rules="required|min:8">
+            <input
+              id="password"
+              v-model.trim="form.password"
+              type="password"
+              class="
+                  w-full
+                  px-3
+                  py-3
+                  text-base
+                  font-normal
+                  text-tm-black
+                  bg-white bg-clip-padding
+                  border border-solid border-tm-gray
+                  rounded
+                  m-0
+                  focus:text-tm-black
+                  focus:bg-white
+                  focus:border-tm-green
+                  focus:outline-none
+                "
+            >
+            <span class="text-sm text-red-400">{{ errors[0] }}</span>
+          </ValidationProvider>
+        </div>
+        <NuxtLink to="/password-reset">
+          <div class="text-sm text-tm-green mt-0 text-right lg:w-96 w-full">
+            Forgot password?
+          </div>
+        </NuxtLink>
+        <button
+          type="submit"
+          class="
+            lg:w-96
+            w-full
+            mt-3
+            py-3
+            bg-tm-green
+            text-white
+            font-medium
+            text-lg
+            leading-normal
+            rounded
+            shadow-md
+            hover:bg-green-900 hover:shadow-lg
+            focus:bg-green-900 focus:shadow-lg focus:outline-none
+          "
+        >
+          Login
+        </button>
+      </form>
       <button
         type="button"
         class="
@@ -120,7 +130,37 @@
 </template>
 
 <script>
+import { ValidationProvider, extend } from 'vee-validate'
+import { required, email, min } from 'vee-validate/dist/rules'
+
+extend('email', {
+  ...email,
+  message: 'this field must be a valid email'
+})
+extend('required', {
+  ...required,
+  message: 'this field is required'
+})
+extend('min', {
+  ...min,
+  message: 'this field must have at least 8 characters'
+})
+
 export default {
-  layout: 'AnonymousUser'
+  components: {
+    ValidationProvider
+  },
+  layout: 'AnonymousUser',
+  data () {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    async onSubmit () {}
+  }
 }
 </script>
