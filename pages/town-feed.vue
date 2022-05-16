@@ -18,7 +18,7 @@
         <div>
           <button
             ref="btnDropdownRef"
-            class="text-tm-black flex text-base rounded-full font-bold px-2 py-3"
+            class="text-tm-black flex text-base rounded-full font-bold p-2"
             type="button"
             @click="toggleDropdown()"
           >
@@ -60,8 +60,9 @@
             flex
             items-center
             flex-row
-            text-base
-            font-medium
+            text-sm
+            sm:text-base
+            font-bold
             text-white
             border
             border-tm-green
@@ -93,13 +94,18 @@
       </div>
       <!-- create post, hidden by default. -->
       <div :class="{'hidden': !postShow, 'visible': postShow}" class="rounded-3xl shadow-2xl bg-white">
-        <div class="flex p-6">
+        <div class="flex p-4 sm:p-6">
           <img
-            class="rounded-full w-12 h-12 max-w-none"
+            class="hidden sm:block rounded-full w-12 h-12 max-w-none"
             alt="A"
             src="~/assets/profilepic.svg"
           >
-          <div class="ml-4 w-full">
+          <img
+            class="sm:hidden rounded-full w-9 h-9 max-w-none"
+            alt="A"
+            src="~/assets/profilepic.svg"
+          >
+          <div class="ml-2 sm:ml-4 w-full">
             <button ref="btnCategoryRef" class="flex border border-tm-black text-sm text-tm-black font-medium py-2 px-4 rounded-full" @click="toggleCategory()">
               Select post category
               <svg
@@ -141,7 +147,7 @@
               name="post"
               cols="30"
               rows="3"
-              class="w-full text-tm-black border-l-2 border-tm-gray px-2 my-4 placeholder:italic focus:border-l-2 focus:border-tm-green focus:outline-none"
+              class="w-full text-tm-black text-sm sm:text-base border-l-2 border-tm-gray px-2 my-2 sm:my-4 placeholder:italic focus:border-l-2 focus:border-tm-green focus:outline-none"
               placeholder="What is happening in your town?"
             />
             <div class="flex items-center justify-between">
@@ -188,7 +194,8 @@
                   flex
                   items-center
                   flex-row
-                  text-base
+                  text-sm
+                  sm:text-base
                   font-medium
                   text-white
                   border
@@ -301,8 +308,8 @@
                 />
               </svg>
             </span>
-            <span class="ml-2">3</span>
-            <i class="ml-2">replies</i>
+            <span class="ml-1 sm:ml-2">3</span>
+            <i class="ml-1 sm:ml-2">replies</i>
           </div>
           <div class="flex items-center justify-between">
             <span class="text-tm-green">
@@ -320,8 +327,8 @@
                 />
               </svg>
             </span>
-            <span class="ml-2">21</span>
-            <i class="ml-2">likes</i>
+            <span class="ml-1 sm:ml-2">21</span>
+            <i class="ml-1 sm:ml-2">likes</i>
           </div>
           <div class="flex items-center justify-between">
             <span>
@@ -338,7 +345,7 @@
                 />
               </svg>
             </span>
-            <i class="ml-2">share</i>
+            <i class="ml-1 sm:ml-2">share</i>
           </div>
         </div>
       </div>
@@ -435,8 +442,8 @@
                 />
               </svg>
             </span>
-            <span class="ml-2">3</span>
-            <i class="ml-2">replies</i>
+            <span class="ml-1 sm:ml-2">3</span>
+            <i class="ml-1 sm:ml-2">replies</i>
           </div>
           <div class="flex items-center justify-between">
             <span>
@@ -453,7 +460,7 @@
                 />
               </svg>
             </span>
-            <i class="ml-2">like</i>
+            <i class="ml-1 sm:ml-2">like</i>
           </div>
           <div class="flex items-center justify-between">
             <span>
@@ -470,7 +477,7 @@
                 />
               </svg>
             </span>
-            <i class="ml-2">share</i>
+            <i class="ml-1 sm:ml-2">share</i>
           </div>
         </div>
       </div>

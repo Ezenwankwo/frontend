@@ -61,8 +61,8 @@
           <span class="text-tm-black sm:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               fill="currentColor"
               class="bi bi-search"
               viewBox="0 0 16 16"
@@ -73,8 +73,8 @@
           <span class="text-tm-black ml-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               fill="currentColor"
               class="bi bi-bell"
               viewBox="0 0 16 16"
@@ -329,7 +329,7 @@
         </div>
       </div>
       <!-- mobile nav -->
-      <div class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-tm-green p-4 m-2 rounded-3xl shadow">
+      <div class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-tm-green p-2 m-2 rounded-3xl shadow">
         <div class="flex items-center justify-around text-white text-sm">
           <NuxtLink to="/town-feed">
             <span>
