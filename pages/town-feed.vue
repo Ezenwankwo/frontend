@@ -7,8 +7,8 @@
           border-2 border-tm-gray
           bg-white
           rounded-3xl
-          px-4
-          py-2
+          p-1
+          sm:p-2
           flex
           items-center
           justify-between
@@ -207,7 +207,7 @@
         </div>
       </div>
       <!-- create post end-->
-      <div class="border-2 border-tm-gray bg-white rounded-3xl px-8 py-4 mt-4">
+      <div class="border-2 border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
         <div class="flex items-center justify-between">
           <span
             class="
@@ -242,7 +242,7 @@
             </svg>
           </span>
         </div>
-        <p class="text-tm-black my-2 font-normal">
+        <p class="text-tm-black my-2 font-normal text-sm sm:text-base">
           It has survived not only five centuries, but also the leap into
           electronic typesetting, remaining essentially unchanged. It was
           popularised in the 1960s with the release of Letraset sheets
@@ -280,6 +280,8 @@
             items-center
             text-tm-black
             justify-between
+            text-sm
+            sm:text-base
             md:w-1/2
             mx-auto
           "
@@ -340,7 +342,7 @@
           </div>
         </div>
       </div>
-      <div class="border-2 border-tm-gray bg-white rounded-3xl px-8 py-4 mt-4">
+      <div class="border-2 border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
         <div class="flex items-center justify-between">
           <span
             class="
@@ -375,7 +377,7 @@
             </svg>
           </span>
         </div>
-        <p class="text-tm-black my-2 font-normal">
+        <p class="text-tm-black my-2 font-normal text-sm sm:text-base">
           It has survived not only five centuries, but also the leap into
           electronic typesetting, remaining essentially unchanged.
         </p>
@@ -411,6 +413,8 @@
             flex
             items-center
             text-tm-black
+            text-sm
+            sm:text-base
             justify-between
             md:w-1/2
             mx-auto

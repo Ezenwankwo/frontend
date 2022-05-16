@@ -1,10 +1,22 @@
 <template>
   <div class="bg-tm-gray">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <!-- header -->
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-12 md:h-16">
         <div class="flex items-center">
-          <span class="text-tm-green">
+          <span class="text-tm-green visible sm:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              fill="currentColor"
+              class="bi bi-badge-tm-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm3.295 3.995V11H4.104V5.995h-1.7V5H7v.994H5.295zM8.692 7.01V11H7.633V5.001h1.209l1.71 3.894h.039l1.71-3.894H13.5V11h-1.072V7.01h-.057l-1.42 3.239h-.773L8.75 7.008h-.058z" />
+            </svg>
+          </span>
+          <span class="text-tm-green invisible sm:visible">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="64"
@@ -23,7 +35,8 @@
             v-model.trim="form.search"
             type="search"
             class="
-              w-48
+              hidden
+              sm:block
               sm:w-80
               lg:w-96
               px-6
@@ -45,7 +58,19 @@
           >
         </div>
         <div class="flex items-center">
-          <span class="text-tm-black">
+          <span class="text-tm-black sm:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+          </span>
+          <span class="text-tm-black ml-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -59,7 +84,7 @@
           </span>
           <img
             src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-            class="rounded-full w-12 border border-tm-gray ml-4"
+            class="rounded-full w-9 border border-tm-gray ml-4"
             alt="Avatar"
           >
         </div>
@@ -305,7 +330,7 @@
       </div>
       <!-- mobile nav -->
       <div class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-tm-green p-4 m-2 rounded-3xl shadow">
-        <div class="flex items-center justify-between text-white">
+        <div class="flex items-center justify-around text-white text-sm">
           <NuxtLink to="/town-feed">
             <span>
               <svg
