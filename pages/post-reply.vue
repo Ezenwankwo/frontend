@@ -152,7 +152,7 @@
             <i class="ml-1 sm:ml-2">share</i>
           </div>
         </div>
-        <div class="flex p-4 sm:p-6 border border-tm-gray rounded-3xl mt-4">
+        <div class="flex p-2 sm:p-4 border border-tm-gray rounded-3xl mt-4">
           <img
             class="hidden sm:block rounded-full w-12 h-12 max-w-none"
             alt="A"
@@ -234,7 +234,7 @@
             </div>
           </div>
         </div>
-        <div class="border border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
+        <div class="border border-tm-gray bg-white rounded-3xl p-2 sm:p-4 mt-2 sm:mt-4">
           <div class="flex items-center justify-end">
             <span class="text-tm-black">
               <svg
@@ -277,7 +277,7 @@
                 src="~/assets/profilepic.svg"
               >
               <span class="flex items-center px-3 py-2">
-                Augustus Ezenwankwo
+                Elizabeth Esu
               </span>
             </span>
             <i> 4h ago </i>
@@ -351,7 +351,7 @@
             </div>
           </div>
         </div>
-        <div class="border border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
+        <div class="border border-tm-gray bg-white rounded-3xl p-2 sm:p-4 mt-2 sm:mt-4">
           <div class="flex items-center justify-end">
             <span class="text-tm-black">
               <svg
