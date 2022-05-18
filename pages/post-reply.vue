@@ -65,7 +65,7 @@
           class="max-w-full h-auto mb-2 rounded-lg"
           alt="..."
         >
-        <div class="flex items-center text-base justify-between text-gray-400">
+        <div class="flex items-center text-sm justify-between text-gray-400">
           <span
             class="
               rounded-full
@@ -234,7 +234,7 @@
             </div>
           </div>
         </div>
-        <div class="border border-tm-gray bg-white rounded-3xl p-2 sm:p-4 mt-2 sm:mt-4">
+        <div class="border border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
           <div class="flex items-center justify-end">
             <span class="text-tm-black">
               <svg
@@ -251,7 +251,7 @@
               </svg>
             </span>
           </div>
-          <p class="text-tm-black my-2 font-normal text-sm sm:text-base">
+          <p class="text-tm-black mb-2 font-normal text-sm sm:text-base">
             It has survived not only five centuries, but also the leap into
             electronic typesetting, remaining essentially unchanged. It was
             popularised in the 1960s with the release of Letraset sheets
@@ -351,7 +351,7 @@
             </div>
           </div>
         </div>
-        <div class="border border-tm-gray bg-white rounded-3xl p-2 sm:p-4 mt-2 sm:mt-4">
+        <div class="border border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
           <div class="flex items-center justify-end">
             <span class="text-tm-black">
               <svg
@@ -368,7 +368,7 @@
               </svg>
             </span>
           </div>
-          <p class="text-tm-black my-2 font-normal text-sm sm:text-base">
+          <p class="text-tm-black mb-2 font-normal text-sm sm:text-base">
             It has survived not only five centuries, but also the leap into
             electronic typesetting, remaining essentially unchanged.
           </p>

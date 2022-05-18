@@ -84,7 +84,7 @@
           </span>
           <img
             src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-            class="rounded-full w-9 border border-tm-gray ml-4"
+            class="rounded-full w-12 border border-tm-gray ml-4"
             alt="Avatar"
           >
         </div>
