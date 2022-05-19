@@ -14,7 +14,41 @@
           justify-between
         "
     >
-      <span class="text-tm-black flex text-base rounded-full font-bold p-2">Community Projects</span>
+      <!-- post filter dropdown -->
+      <div>
+        <button
+          ref="btnDropdownRef"
+          class="text-tm-black flex text-base rounded-full font-bold p-2"
+          type="button"
+          @click="toggleDropdown()"
+        >
+          All
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-down my-auto ml-2"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </button>
+        <div ref="popoverDropdownRef" :class="{'hidden': !dropdownPopoverShow, 'block': dropdownPopoverShow}" class="bg-white text-base z-50 float-left py-2 list-none text-left rounded border border-tm-gray shadow-lg mt-1" style="min-width:6rem">
+          <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-tm-black hover:bg-tm-gray">
+            All
+          </a>
+          <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-tm-black hover:bg-tm-gray">
+            On-going
+          </a>
+          <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-tm-black hover:bg-tm-gray">
+            Not-started
+          </a>
+          <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-tm-black hover:bg-tm-gray">
+            Completed
+          </a>
+        </div>
+      </div>
       <button
         type="button"
         class="
@@ -58,7 +92,7 @@
     <div class="grid grid-cols-10">
       <div class="col-span-10 lg:col-span-5 bg-white rounded-3xl lg:mr-8 mb-4 lg:mb-8">
         <div class="flex justify-end px-2 pt-2 sm:px-4 sm:pt-4">
-          <span class="text-lg text-blue-400 italic">On-going</span>
+          <span class="text-base md:text-lg text-blue-400 italic">On-going</span>
         </div>
         <div class="md:grid md:grid-cols-9 px-2 sm:px-4">
           <div class="md:col-span-4 w-full p-1 md:p-2">
@@ -79,9 +113,9 @@
           </div>
         </div>
         <hr class="border-dashed mt-2">
-        <div class="grid grid-cols-10 p-2 sm:p-4">
+        <div class="grid grid-cols-10 p-3 sm:p-6">
           <div class="col-span-6 text-tm-black bg-tm-gray rounded-lg">
-            <div class="w-5/6 mx-auto mt-4">
+            <div class="w-5/6 mx-auto mt-2 md:mt-4">
               <span class="text-xs sm:text-sm italic">20 donors</span>
               <span class="flex justify-between font-bold text-sm sm:text-base">
                 <span>$1200</span>
@@ -118,7 +152,7 @@
       </div>
       <div class="col-span-10 lg:col-span-5 bg-white rounded-3xl lg:mr-8 mb-4 lg:mb-8">
         <div class="flex justify-end px-2 pt-2 sm:px-4 sm:pt-4">
-          <span class="text-lg text-tm-green italic">Completed</span>
+          <span class="text-base md:text-lg text-tm-green italic">Completed</span>
         </div>
         <div class="md:grid md:grid-cols-9 px-2 sm:px-4">
           <div class="md:col-span-4 w-full p-1 md:p-2">
@@ -139,9 +173,9 @@
           </div>
         </div>
         <hr class="border-dashed mt-2">
-        <div class="grid grid-cols-10 p-2 sm:p-4">
+        <div class="grid grid-cols-10 p-3 sm:p-6">
           <div class="col-span-6 text-tm-black bg-tm-gray rounded-lg">
-            <div class="w-5/6 mx-auto mt-4">
+            <div class="w-5/6 mx-auto mt-2 md:mt-4">
               <span class="text-xs sm:text-sm italic">20 donors</span>
               <span class="flex justify-between font-bold text-sm sm:text-base">
                 <span>$1200</span>
@@ -178,7 +212,7 @@
       </div>
       <div class="col-span-10 lg:col-span-5 bg-white rounded-3xl lg:mr-8 mb-4 lg:mb-8">
         <div class="flex justify-end px-2 pt-2 sm:px-4 sm:pt-4">
-          <span class="text-lg text-red-400 italic">Not-started</span>
+          <span class="text-base md:text-lg text-red-400 italic">Not-started</span>
         </div>
         <div class="md:grid md:grid-cols-9 px-2 sm:px-4">
           <div class="md:col-span-4 w-full p-1 md:p-2">
@@ -199,9 +233,9 @@
           </div>
         </div>
         <hr class="border-dashed mt-2">
-        <div class="grid grid-cols-10 p-2 sm:p-4">
+        <div class="grid grid-cols-10 p-3 sm:p-6">
           <div class="col-span-6 text-tm-black bg-tm-gray rounded-lg">
-            <div class="w-5/6 mx-auto mt-4">
+            <div class="w-5/6 mx-auto mt-2 md:mt-4">
               <span class="text-xs sm:text-sm italic">20 donors</span>
               <span class="flex justify-between font-bold text-sm sm:text-base">
                 <span>$1200</span>
@@ -241,8 +275,26 @@
 </template>
 
 <script>
+import { createPopper } from '@popperjs/core'
 export default {
   auth: false,
-  layout: 'AuthenticatedUser'
+  layout: 'AuthenticatedUser',
+  data () {
+    return {
+      dropdownPopoverShow: false
+    }
+  },
+  methods: {
+    toggleDropdown () {
+      if (this.dropdownPopoverShow) {
+        this.dropdownPopoverShow = false
+      } else {
+        this.dropdownPopoverShow = true
+        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
+          placement: 'bottom-start'
+        })
+      }
+    }
+  }
 }
 </script>
