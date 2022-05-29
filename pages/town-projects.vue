@@ -109,7 +109,7 @@
               </svg>
             </span>
           </div>
-          <div class="p-1 md:p-2">
+          <div class="p-2 md:p-4">
             <div class="w-full">
               <img
                 alt="gallery"
@@ -133,7 +133,7 @@
               "
               >
                 <img
-                  class="rounded-full w-9 h-9 max-w-none"
+                  class="rounded-full w-10 h-10 max-w-none"
                   alt="A"
                   src="~/assets/profilepic.svg"
                 >
@@ -163,7 +163,7 @@
             </svg>
           </span>
         </div>
-        <div class="p-1 sm:p-2">
+        <div class="p-2 md:p-4">
           <div class="w-full">
             <img
               alt="gallery"
@@ -187,7 +187,7 @@
               "
             >
               <img
-                class="rounded-full w-9 h-9 max-w-none"
+                class="rounded-full w-10 h-10 max-w-none"
                 alt="A"
                 src="~/assets/profilepic.svg"
               >
@@ -216,7 +216,7 @@
             </svg>
           </span>
         </div>
-        <div class="p-1 sm:p-2">
+        <div class="p-2 md:p-4">
           <div class="w-full">
             <img
               alt="gallery"
@@ -240,7 +240,7 @@
               "
             >
               <img
-                class="rounded-full w-9 h-9 max-w-none"
+                class="rounded-full w-10 h-10 max-w-none"
                 alt="A"
                 src="~/assets/profilepic.svg"
               >

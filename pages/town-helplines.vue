@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="grid grid-cols-10 rounded-3xl bg-white">
-      <div class="col-span-10 md:col-span-3 text-tm-black text-lg">
+    <!-- display on medium an large devices -->
+    <div class="grid grid-cols-10 rounded-3xl bg-white hidden md:flex">
+      <div class="col-span-3 text-tm-black text-lg">
         <div class="flex justify-between p-4 sm:p-6 border-b-2 border-tm-gray bg-tm-green rounded-tl-3xl font-semibold text-white">
           <span>Safety</span>
           <svg
@@ -120,7 +121,7 @@
           </svg>
         </div>
       </div>
-      <div class="hidden md:block md:col-span-7 border-l-2 border-tm-gray p-4 sm:p-6">
+      <div class="col-span-7 border-l-2 border-tm-gray p-4 sm:p-6">
         <div class="flex justify-between mb-4 md:mb-8">
           <input
             id="search"
@@ -167,7 +168,7 @@
             <div class="flex items-end">
               <img
                 src="~/assets/profilepic.svg"
-                class="rounded w-12 border border-tm-gray mr-4"
+                class="rounded w-12 mr-4"
                 alt="Avatar"
               >
               <p class="font-semibold text-base md:text-lg">
@@ -192,8 +193,8 @@
           </p>
           <div class="flex justify-between items-center my-2 md:my-4">
             <div class="text-tm-green mt-2">
-              <span class="px-4 py-2 border border-tm-green rounded-full">08183096264</span>
-              <span class="px-4 py-2 border border-tm-green rounded-full">08055789594</span>
+              <span class="px-4 py-2 text-sm md:text-base border border-tm-green rounded-full">08183096264</span>
+              <span class="px-4 py-2 text-sm md:text-base border border-tm-green rounded-full">08055789594</span>
             </div>
             <span class="flex">
               <svg
@@ -215,7 +216,7 @@
             <div class="flex items-end">
               <img
                 src="~/assets/profilepic.svg"
-                class="rounded w-12 border border-tm-gray mr-4"
+                class="rounded w-12 mr-4"
                 alt="Avatar"
               >
               <p class="font-semibold text-base md:text-lg">
@@ -241,8 +242,8 @@
           </p>
           <div class="flex justify-between items-center my-2 md:my-4">
             <div class="text-tm-green mt-2">
-              <span class="px-4 py-2 border border-tm-green rounded-full">08183096264</span>
-              <span class="px-4 py-2 border border-tm-green rounded-full">08055789594</span>
+              <span class="px-4 py-2 text-sm md:text-base border border-tm-green rounded-full">08183096264</span>
+              <span class="px-4 py-2 text-sm md:text-base border border-tm-green rounded-full">08055789594</span>
             </div>
             <span class="flex">
               <svg
@@ -258,6 +259,128 @@
               <i>3 Feedbacks</i>
             </span>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- mobile device -->
+    <div class="rounded-3xl bg-white visible md:invisible">
+      <div class="text-tm-black text-lg font-medium">
+        <NuxtLink to="/helpline-list" class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Safety</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </NuxtLink>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Waste Disposal</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Water Supply</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Individuals With Disabilities</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Substance Use</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Mental Health</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Legal Services</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Volunteer Opportunities</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+        <div class="flex justify-between px-8 h-20 items-center border-b-2 border-tm-gray">
+          <span>Housing</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-right my-auto"
+            viewBox="0 0 16 16"
+          >
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
         </div>
       </div>
     </div>
