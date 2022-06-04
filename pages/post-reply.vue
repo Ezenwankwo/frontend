@@ -192,17 +192,10 @@
               <button
                 type="button"
                 class="
-                  px-3
-                  py-2
-                  flex
-                  items-center
-                  flex-row
+                  px-6
+                  py-3
                   text-sm
-                  sm:text-base
-                  font-medium
                   text-white
-                  border
-                  border-tm-green
                   bg-tm-green
                   rounded-full
                   shadow-md
@@ -216,7 +209,8 @@
           </div>
         </div>
         <div class="border border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
-          <div class="flex items-center justify-end">
+          <div class="flex items-center justify-between">
+            <i class="text-tm-green">reply to post</i>
             <span class="text-tm-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +226,7 @@
               </svg>
             </span>
           </div>
-          <p class="text-tm-black mb-2 font-normal text-sm sm:text-base">
+          <p class="text-tm-black my-2 font-normal text-sm sm:text-base">
             It has survived not only five centuries, but also the leap into
             electronic typesetting, remaining essentially unchanged. It was
             popularised in the 1960s with the release of Letraset sheets
@@ -333,7 +327,8 @@
           </div>
         </div>
         <div class="border border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-2 sm:mt-4">
-          <div class="flex items-center justify-end">
+          <div class="flex items-center justify-between">
+            <i class="text-tm-green">reply to post</i>
             <span class="text-tm-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -349,7 +344,7 @@
               </svg>
             </span>
           </div>
-          <p class="text-tm-black mb-2 font-normal text-sm sm:text-base">
+          <p class="text-tm-black my-2 font-normal text-sm sm:text-base">
             It has survived not only five centuries, but also the leap into
             electronic typesetting, remaining essentially unchanged.
           </p>
