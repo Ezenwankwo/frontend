@@ -216,7 +216,7 @@
       <!-- create post end-->
       <PostItem />
     </div>
-    <TownSidebar />
+    <SideBar />
   </div>
 </template>
 

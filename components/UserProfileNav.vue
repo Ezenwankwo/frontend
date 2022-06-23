@@ -17,14 +17,14 @@
         Replies
       </button>
     </NuxtLink>
-    <NuxtLink to="/profiles/user-projects">
-      <button class="text-xs md:text-sm px-4 md:px-6 py-2 md:py-3 rounded-full" :class="$route.path == '/profiles/user-projects' ? activeClass:inactiveClass">
-        Projects
+    <NuxtLink to="/profiles/user-likes">
+      <button class="text-xs md:text-sm px-4 md:px-6 py-2 md:py-3 rounded-full" :class="$route.path == '/profiles/user-likes' ? activeClass:inactiveClass">
+        Likes
       </button>
     </NuxtLink>
-    <NuxtLink to="/profiles/user-rooms">
-      <button class="text-xs md:text-sm px-4 md:px-6 py-2 md:py-3 bg-white rounded-full">
-        Rooms
+    <NuxtLink to="/profiles/user-bookmarks">
+      <button class="text-xs md:text-sm px-4 md:px-6 py-2 md:py-3 rounded-full" :class="$route.path == '/profiles/user-bookmarks' ? activeClass:inactiveClass">
+        Bookmarks
       </button>
     </NuxtLink>
   </div>
