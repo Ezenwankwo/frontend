@@ -35,11 +35,14 @@
             v-model.trim="form.search"
             type="search"
             class="
-              w-60
+              w-full
               md:w-96
-              px-6
-              py-3
-              text-sm
+              px-3
+              md:px-6
+              py-1.5
+              md:py-3
+              text-xs
+              md:text-sm
               font-normal
               text-tm-black
               bg-white bg-clip-padding

@@ -1,7 +1,10 @@
 <template>
   <div class="grid grid-cols-10">
     <div class="col-span-10 lg:col-span-7 rounded-3xl lg:mr-8">
-      <PostItem />
+      <h2 class="font-bold text-2xl text-tm-black my-2">
+        Notifications
+      </h2>
+      <NotificationItem />
     </div>
     <SideBar />
   </div>
