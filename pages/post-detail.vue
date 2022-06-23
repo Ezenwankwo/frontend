@@ -211,7 +211,7 @@
         <ReplyItem />
       </div>
     </div>
-    <TownSidebar />
+    <SideBar />
   </div>
 </template>
 
