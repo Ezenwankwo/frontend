@@ -17,7 +17,7 @@
         </svg>
       </span>
     </div>
-    <div class="mt-2 text-sm md:text-base">
+    <div class="mt-2 text-base">
       <a href="" class="font-semibold">Eunice Effiong</a>
       <i>liked</i>
       <span>your</span>
