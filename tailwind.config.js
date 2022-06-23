@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       colors: {
         'tm-black': '#28475C',
-        'tm-gray': '#DAE0DB',
-        'tm-green': '#4ca928',
+        'tm-gray': '#edeef1',
+        'tm-green': '#47beb9',
       },
       fontFamily: {
         sans: ['Lato', 'sans-serif'],
