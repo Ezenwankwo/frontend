@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-10">
-    <div class="col-span-10 lg:col-span-7 rounded-3xl lg:mr-8">
+    <div class="col-span-10 lg:col-span-7 lg:mr-8">
       <!-- post button and filter section-->
       <div
         class="
