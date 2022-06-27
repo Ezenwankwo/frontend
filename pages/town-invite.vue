@@ -1,10 +1,10 @@
 <template>
   <div class="grid grid-cols-10">
-    <div class="col-span-10 lg:col-span-7 rounded-3xl lg:mr-8">
+    <div class="col-span-10 lg:col-span-7 lg:mr-8">
       <h2 class="font-bold text-2xl text-tm-black my-2">
         Invite
       </h2>
-      <div class="bg-tm-green text-white items-center rounded h-24 py-2 px-4 md:py-4 md:px-8 mt-2 sm:mt-4">
+      <div class="bg-tm-green text-white items-center rounded p-4 md:p-8 mt-2 sm:mt-4">
         By sharing with your town,
         you can help to strengthen connections
         between residents and help build a better community.
