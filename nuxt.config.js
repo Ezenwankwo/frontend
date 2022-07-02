@@ -99,9 +99,9 @@ export default {
   },
 
   // Global auth settings for nuxt-next
-  router: {
-    middleware: ['auth']
-  },
+  // router: {
+  //  middleware: ['auth']
+  //},
   auth: {
     strategies: {
       google: {

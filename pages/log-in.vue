@@ -80,13 +80,14 @@
             lg:w-96
             w-full
             mt-3
+            px-6
             py-3
             bg-tm-green
             text-white
             font-medium
             text-lg
             leading-normal
-            rounded
+            rounded-full
             shadow-md
             hover:bg-green-900 hover:shadow-lg
             focus:bg-green-900 focus:shadow-lg focus:outline-none
@@ -101,6 +102,7 @@
           w-full
           lg:w-96
           mt-3
+          px-6
           py-3
           bg-white bg-clip-padding
           text-tm-black
@@ -109,7 +111,7 @@
           leading-normal
           border
           border-tm-green
-          rounded
+          rounded-full
           shadow-md
           hover:bg-tm-green hover:shadow-lg hover:text-white
           focus:bg-green-900 focus:shadow-lg focus:outline-none focus:text-white

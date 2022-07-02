@@ -1,7 +1,7 @@
 <template>
   <div class="border-2 border-tm-gray bg-white rounded-3xl px-4 py-8">
     <img
-      class="rounded-full w-36 h-36 max-w-none mx-auto"
+      class="rounded-full w-36 h-36 max-w-none ring-2 ring-white mx-auto"
       alt="A"
       src="~/assets/profilepic.svg"
     >
