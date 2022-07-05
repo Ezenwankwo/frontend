@@ -4,11 +4,23 @@
       <!-- header -->
       <div class="flex items-center justify-between h-16">
         <NuxtLink to="/">
-          <span class="text-tm-green">
+          <span class="hidden md:block text-tm-green">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="64"
               height="64"
+              fill="currentColor"
+              class="bi bi-badge-tm-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm3.295 3.995V11H4.104V5.995h-1.7V5H7v.994H5.295zM8.692 7.01V11H7.633V5.001h1.209l1.71 3.894h.039l1.71-3.894H13.5V11h-1.072V7.01h-.057l-1.42 3.239h-.773L8.75 7.008h-.058z" />
+            </svg>
+          </span>
+          <span class="visible md:hidden text-tm-green">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
               fill="currentColor"
               class="bi bi-badge-tm-fill"
               viewBox="0 0 16 16"
@@ -47,7 +59,7 @@
           <NuxtLink to="/profiles/user-posts">
             <img
               src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-              class="rounded-full w-12 border border-tm-gray ring-2 ring-white"
+              class="rounded-full w-9 border border-tm-gray ring-2 ring-white"
               alt="Avatar"
             >
           </NuxtLink>

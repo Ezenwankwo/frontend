@@ -116,7 +116,7 @@ export default {
       },
     },
     redirect: {
-      login: '/log-in',
+      login: '/login',
       logout: '/',
       callback: '/town-feed',
       home: '/town-feed'

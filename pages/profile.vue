@@ -7,11 +7,10 @@
       <div class="text-tm-black text-base lg:pb-12 pb-6">
         Show and tell people in your town something unique about yourself.
       </div>
-      <div class="md:hidden mx-auto lg:pb-12 pb-6">
-        <img src="~/assets/profilepic.svg" class="w-40 mx-auto border border-tm-gray rounded-full">
-        <p class="text-tm-green mt-6 mx-auto text-center text-lg">
-          Upload profile photo
-        </p>
+      <div class="md:hidden mx-auto lg:pb-12 pb-6 text-center">
+        <img src="~/assets/profilepic.svg" class="w-40 mx-auto border border-tm-gray rounded-full mb-6">
+        <input id="photo" type="file" class="hidden">
+        <label for="photo" class="px-6 py-3 bg-tm-gray text-tm-green text-bold rounded-full">choose photo</label>
       </div>
       <div class="mb-3 lg:w-96">
         <label
@@ -23,17 +22,14 @@
           type="text"
           class="
               w-full
-              px-3
-              py-3
+              p-3
               text-base
               font-normal
-              text-gray-70
+              text-tm-black
               bg-white bg-clip-padding
-              border border-solid border-tm-gray
+              border border-tm-black
               rounded
               m-0
-              focus:text-tm-black
-              focus:bg-white
               focus:border-tm-green
               focus:outline-none
             "
@@ -49,17 +45,14 @@
           type="text"
           class="
               w-full
-              px-3
-              py-3
+              p-3
               text-base
               font-normal
               text-tm-black
               bg-white bg-clip-padding
-              border border-solid border-tm-gray
+              border border-tm-black
               rounded
               m-0
-              focus:text-tm-black
-              focus:bg-white
               focus:border-tm-green
               focus:outline-none
             "
@@ -74,55 +67,54 @@
           id="bio"
           class="
                 w-full
-                px-3
-                py-3
+                p-3
                 text-base
                 font-normal
                 text-tm-black
                 bg-white bg-clip-padding
-                border border-solid border-gray-300
+                border border-tm-black
                 rounded
                 m-0
-                focus:text-tm-black
-                focus:bg-white
                 focus:border-tm-green
                 focus:outline-none
             "
           rows="3"
         />
       </div>
-      <button
-        type="button"
-        class="
-          lg:w-96
-          w-full
-          my-3
-          py-3
-          bg-tm-green
-          text-white
-          font-medium
-          text-lg
-          leading-normal
-          rounded
-          shadow-md
-          hover:bg-green-900 hover:shadow-lg
-          focus:bg-green-900 focus:shadow-lg focus:outline-none
-        "
-      >
-        Create Profile
-      </button>
+      <NuxtLink to="/feed">
+        <button
+          type="button"
+          class="
+            lg:w-96
+            w-full
+            my-3
+            py-3
+            bg-tm-green
+            text-white
+            font-bold
+            text-lg
+            leading-normal
+            rounded-full
+            shadow-md
+            hover:bg-teal-600 hover:shadow-lg
+            focus:bg-teal-600 focus:shadow-lg focus:outline-none
+          "
+        >
+          Create Profile
+        </button>
+      </NuxtLink>
     </div>
-    <div class="hidden md:block m-auto">
-      <img src="~/assets/profilepic.svg" class="w-72 border border-tm-gray mx-auto rounded-full">
-      <p class="text-tm-green mt-8 w-72 text-center text-lg">
-        Upload profile photo
-      </p>
+    <div class="hidden md:block m-auto text-center">
+      <img src="~/assets/profilepic.svg" class="w-60 border border-tm-gray mx-auto rounded-full mb-6 ring-2 ring-white">
+      <input id="photo" type="file" class="hidden">
+      <label for="photo" class="px-6 py-3 bg-tm-gray text-tm-green text-bold rounded-full">choose photo</label>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'CreateProfile',
   layout: 'AnonymousUser'
 }
 </script>

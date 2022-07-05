@@ -224,6 +224,7 @@
 import { createPopper } from '@popperjs/core'
 
 export default {
+  name: 'TownFeed',
   layout: 'AuthenticatedUser',
   data () {
     return {
