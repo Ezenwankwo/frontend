@@ -5,8 +5,7 @@
         Verify your email
       </div>
       <div class="text-tm-black text-base lg:pb-12 pb-6">
-        Enter the six (6) digit code we sent to your email;<br>
-        townsmeet@gmail.com
+        Enter the six (6) digit code we sent to your email: townsmeet@gmail.com
       </div>
       <div class="mb-3 lg:w-96">
         <label
@@ -31,7 +30,7 @@
             "
         >
       </div>
-      <NuxtLink to="/profile">
+      <NuxtLink to="/password-reset-confirm">
         <button
           type="button"
           class="

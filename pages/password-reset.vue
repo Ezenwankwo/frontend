@@ -7,9 +7,6 @@
       <div class="text-tm-black text-base lg:pb-12 pb-6">
         No worries, we will send you instructions to reset your password.
       </div>
-      <div class="md:hidden mx-auto lg:pb-12 pb-6">
-        <img src="~/assets/forgotpassword.svg" class="object-contain mx-auto">
-      </div>
       <div class="mb-3 lg:w-96">
         <label
           for="exampleEmail0"
@@ -20,44 +17,43 @@
           type="email"
           class="
               w-full
-              px-3
-              py-3
+              p-3
               text-base
               font-normal
               text-tm-black
               bg-white bg-clip-padding
-              border border-solid border-tm-gray
+              border border-tm-black
               rounded
               m-0
-              focus:text-tm-black
-              focus:bg-white
               focus:border-tm-green
               focus:outline-none
             "
         >
       </div>
-      <button
-        type="button"
-        class="
-          lg:w-96
-          w-full
-          my-3
-          py-3
-          bg-tm-green
-          text-white
-          font-medium
-          text-lg
-          leading-normal
-          rounded
-          shadow-md
-          hover:bg-green-900 hover:shadow-lg
-          focus:bg-green-900 focus:shadow-lg focus:outline-none
-        "
-      >
-        Send instructions
-      </button>
+      <NuxtLink to="verify">
+        <button
+          type="button"
+          class="
+            lg:w-96
+            w-full
+            my-3
+            py-3
+            bg-tm-green
+            text-white
+            font-bold
+            text-lg
+            leading-normal
+            rounded-full
+            shadow-md
+            hover:bg-teal-600 hover:shadow-lg
+            focus:bg-teal-600 focus:shadow-lg focus:outline-none
+          "
+        >
+          Send instructions
+        </button>
+      </NuxtLink>
       <p class="text-tm-black">
-        Return to <NuxtLink to="/log-in" class="text-tm-green ml-2">
+        Return to <NuxtLink to="/login" class="text-tm-green ml-2">
           Login
         </NuxtLink>
       </p>
@@ -65,11 +61,15 @@
     <div class="hidden md:block m-auto">
       <img src="~/assets/forgotpassword.svg" class="object-fit">
     </div>
+    <div class="md:hidden mx-auto lg:pb-12 pb-6 mt-8">
+      <img src="~/assets/forgotpassword.svg" class="object-contain mx-auto">
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'PasswordReset',
   layout: 'AnonymousUser'
 }
 </script>
