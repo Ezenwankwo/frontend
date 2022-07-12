@@ -89,8 +89,9 @@
                       text-base
                       font-medium
                       text-tm-green
-                      border-2
-                      border-tm-green
+                      outline
+                      outline-1
+                      outline-tm-green
                       bg-tm-gray
                       shadow-md
                       hover:outline-tm-green hover:text-white hover:bg-tm-green
@@ -110,12 +111,13 @@
                       text-base
                       font-medium
                       text-white
-                      border-2
-                      border-tm-green
+                      outline
+                      outline-1
+                      outline-tm-green
                       bg-tm-green
                       shadow-md
-                      hover:outline-none hover:text-white
-                      focus:outline-none focus:text-white focus:bg-green-900
+                      hover:bg-teal-600 hover:text-white
+                      focus:bg-teal-600 focus:text-white focus:bg-green-900
                     "
                 >
                   Signup
@@ -226,8 +228,9 @@
                 font-medium
                 text-tm-green
                 bg-tm-gray
-                border
-                border-tm-green
+                outline
+                outline-1
+                outline-tm-green
                 rounded-full
                 shadow-md
                 hover:outline-none hover:bg-tm-green hover:text-white
@@ -247,12 +250,13 @@
                 text-base
                 font-medium
                 text-white
+                outline
+                outline-1
+                outline-tm-green
                 bg-tm-green
-                border
-                border-tm-green
                 shadow-md
-                hover:outline-none hover:text-white
-                focus:outline-none focus:text-white focus:bg-green-900
+                hover:bg-teal-600 hover:text-white
+                focus:bg-teal-600focus:text-white focus:bg-green-900
               "
             >
               Signup

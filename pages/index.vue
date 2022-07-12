@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4 lg:px-12 columns-10 py-8 md:py-12 grid lg:grid-cols-2">
-    <div class="text-center mt-4 md:mt-8">
+    <div class="md:mt-8">
       <div class="hidden lg:block text-tm-black text-3xl lg:text-6xl font-extrabold md:mt-8">
         See what's <br> happening in <br> your town.
       </div>
@@ -28,6 +28,9 @@
             text-white
             font-bold
             text-lg
+            outline
+            outline-1
+            outline-tm-green
             rounded-full
             shadow-md
             hover:bg-teal-600 hover:shadow-lg

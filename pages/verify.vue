@@ -1,38 +1,41 @@
 <template>
   <div class="container mx-auto px-4 lg:px-12 columns-10 py-8 md:py-12 grid md:grid-cols-2">
     <div>
-      <div class="text-tm-black text-2xl md:text-3xl pb-4 font-medium">
-        Verify your email
+      <div class="text-tm-black text-xl md:text-3xl lg:pb-12 pb-6 font-medium">
+        Verify email, we sent a code to: <span class="text-tm-green">{{ user.email }}</span>
       </div>
-      <div class="text-tm-black text-base lg:pb-12 pb-6">
-        Enter the six (6) digit code we sent to your email: townsmeet@gmail.com
-      </div>
-      <div class="mb-3 lg:w-96">
-        <label
-          for="exampleEmail0"
-          class="form-label inline-block mb-2 text-tm-black"
-        >Enter verification code</label>
-        <input
-          id="verify"
-          type="number"
-          class="
-              w-full
-              p-3
-              text-base
-              font-normal
-              text-tm-black
-              bg-white bg-clip-padding
-              border border-tm-black
-              rounded
-              m-0
-              focus:border-tm-green
-              focus:outline-none
-            "
-        >
-      </div>
-      <NuxtLink to="/password-reset-confirm">
+      <form @submit.prevent="verifyOTP">
+        <div class="mb-3 lg:w-96">
+          <label
+            for="exampleEmail0"
+            class="form-label inline-block mb-2 text-tm-black"
+          >Enter verification code</label>
+          <input
+            id="verify"
+            v-model.trim="otp.code"
+            type="text"
+            pattern="\d*"
+            maxlength="6"
+            minlength="6"
+            autocomplete="off"
+            class="
+                w-full
+                p-3
+                text-base
+                font-normal
+                text-tm-black
+                bg-white bg-clip-padding
+                border border-tm-black
+                rounded
+                m-0
+                focus:border-tm-green
+                focus:outline-none
+              "
+            required
+          >
+        </div>
         <button
-          type="button"
+          type="submit"
           class="
             lg:w-96
             w-full
@@ -51,9 +54,9 @@
         >
           Verify
         </button>
-      </NuxtLink>
+      </form>
       <p class="text-tm-black">
-        Didn't receive code? <span class="text-tm-green ml-2">Resend</span>
+        Didn't receive code? <span class="text-tm-green ml-2" @click="resendOTP">Resend</span>
       </p>
     </div>
     <div class="hidden md:block m-auto">
@@ -68,6 +71,45 @@
 <script>
 export default {
   name: 'VerifyEmail',
-  layout: 'AnonymousUser'
+  layout: 'AnonymousUser',
+  middleware: 'signup',
+  data () {
+    const user = this.$store.state.auth.user
+    return {
+      user,
+      otp: {
+        code: ''
+      }
+    }
+  },
+  methods: {
+    async verifyOTP () {
+      try {
+        await this.$axios.post('/users/user/verify_otp', {
+          otp: this.otp.code,
+          email: this.user.email
+        })
+        this.user.verify = true
+        this.$store.commit('auth/updateUser', this.user)
+        if (this.user.token) {
+          this.$router.push('/profile')
+        } else {
+          this.$router.push('/password-reset-confirm')
+        }
+      } catch (e) {
+        this.$toast.error(e.response.data.data, { position: 'top-center' })
+      }
+    },
+    async resendOTP () {
+      try {
+        await this.$axios.post('/users/user/resend_otp', {
+          email: this.user.email
+        })
+        this.$toast.success('OTP Sent.', { position: 'top-center' })
+      } catch (e) {
+        this.$toast.error(e.response.data.data, { position: 'top-center' })
+      }
+    }
+  }
 }
 </script>

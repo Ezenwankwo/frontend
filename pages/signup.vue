@@ -1,68 +1,75 @@
 <template>
   <div class="container mx-auto px-4 lg:px-12 columns-10 py-8 md:py-12 grid md:grid-cols-2">
     <div>
-      <div class="text-tm-black text-2xl md:text-3xl lg:pb-12 pb-6 font-medium">
+      <div class="text-tm-black text-xl md:text-3xl lg:pb-12 pb-6 font-medium">
         Sign up to <span class="text-tm-green">connect</span> with your
         townspeople.
       </div>
-      <div class="mb-3 lg:w-96">
-        <label
-          for="exampleEmail0"
-          class="form-label inline-block mb-2 text-tm-black"
-        >Email address</label>
-        <input
-          id="email"
-          v-model.trim="form.email"
-          type="email"
-          class="
-              w-full
-              p-3
-              text-base
-              font-normal
-              text-tm-black
-              bg-white bg-clip-padding
-              border border-tm-black
-              rounded
-              m-0
-              focus:border-tm-green
-              focus:outline-none
-            "
-        >
-      </div>
-      <div class="mb-3 lg:w-96">
-        <label
-          for="examplePassword0"
-          class="form-label inline-block mb-2 text-tm-black"
-        >Password</label>
-        <input
-          id="password"
-          v-model.trim="form.password"
-          type="password"
-          class="
-              w-full
-              p-3
-              text-base
-              font-normal
-              text-tm-black
-              bg-white bg-clip-padding
-              border border-tm-black
-              rounded
-              m-0
-              focus:border-tm-green
-              focus:outline-none
-            "
-        >
-      </div>
-      <div class="text-sm text-tm-black m-0">
-        I agree to the <NuxtLink to="/log-in">
-          terms of use
-        </NuxtLink> and <NuxtLink to="/log-in">
-          privacy policy
-        </NuxtLink>.
-      </div>
-      <NuxtLink to="/verify">
+      <form @submit.prevent="signupWithTownsmeet">
+        <div class="mb-3 lg:w-96">
+          <label
+            for="exampleEmail0"
+            class="form-label inline-block mb-2 text-tm-black"
+          >Email address</label>
+          <input
+            id="email"
+            v-model.trim="signup.email"
+            type="email"
+            maxlength="50"
+            minlength="10"
+            class="
+                w-full
+                p-3
+                text-base
+                font-normal
+                text-tm-black
+                bg-white bg-clip-padding
+                border border-tm-black
+                rounded
+                m-0
+                focus:border-tm-green
+                focus:outline-none
+              "
+            required
+          >
+        </div>
+        <div class="mb-3 lg:w-96">
+          <label
+            for="examplePassword0"
+            class="form-label inline-block mb-2 text-tm-black"
+          >Password</label>
+          <input
+            id="password"
+            v-model.trim="signup.password"
+            type="password"
+            maxlength="25"
+            minlength="5"
+            autocomplete="off"
+            class="
+                w-full
+                p-3
+                text-base
+                font-normal
+                text-tm-black
+                bg-white bg-clip-padding
+                border border-tm-black
+                rounded
+                m-0
+                focus:border-tm-green
+                focus:outline-none
+              "
+            required
+          >
+        </div>
+        <div class="text-sm text-tm-black m-0">
+          I agree to the <NuxtLink to="/terms" class="text-tm-green">
+            terms of use
+          </NuxtLink> and <NuxtLink to="/privacy" class="text-tm-green">
+            privacy policy
+          </NuxtLink>.
+        </div>
         <button
-          type="button"
+          type="submit"
           class="
             lg:w-96
             w-full
@@ -82,7 +89,7 @@
         >
           Signup
         </button>
-      </NuxtLink>
+      </form>
       <button
         type="button"
         class="
@@ -103,7 +110,6 @@
           hover:bg-tm-green hover:shadow-lg hover:text-white
           focus:bg-green-900 focus:shadow-lg focus:outline-none focus:text-white
         "
-        @click="loginWithGoogle()"
       >
         Signup with Google
       </button>
@@ -125,20 +131,28 @@
 <script>
 export default {
   name: 'SignUp',
-  auth: false,
   layout: 'AnonymousUser',
   data () {
     return {
-      form: {
+      signup: {
         email: '',
         password: ''
       }
     }
   },
   methods: {
-    async onSubmit () {},
-    loginWithGoogle () {
-      this.$auth.loginWith('google')
+    async signupWithTownsmeet () {
+      try {
+        const res = await this.$axios.post('/users/user/create_user', {
+          email: this.signup.email,
+          password: this.signup.password
+        })
+        const user = res.data.data
+        this.$store.commit('auth/updateUser', user)
+        this.$router.push('/verify')
+      } catch (e) {
+        this.$toast.error(e.response.data.data, { position: 'top-center' })
+      }
     }
   }
 }
