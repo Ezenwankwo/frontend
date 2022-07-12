@@ -1,9 +1,6 @@
 <template>
-  <div>
+  <div class="h-screen">
     <AnonymousHeader />
-    <div class="h-screen">
-      <Nuxt />
-    </div>
-    <AnonymousFooter />
+    <Nuxt />
   </div>
 </template>

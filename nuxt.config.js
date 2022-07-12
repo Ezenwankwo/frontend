@@ -20,7 +20,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/icons.js',
+    { src: '~/plugins/vuex-persist', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -58,14 +58,12 @@ export default {
     'vue-toastification/nuxt',
 
     '@nuxtjs/google-fonts',
-
-    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: 'https://townsmeet-api-pr-107.herokuapp.com/api'
   },
 
   toast: {
@@ -94,32 +92,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [
-      'vee-validate/dist/rules'
     ]
-  },
-
-  // Global auth settings for nuxt-next
-  router: {
-    middleware: ['auth']
-  },
-  auth: {
-    strategies: {
-      google: {
-        clientId: '67108109230-5o0nu8juetk7424bqlcumphvivu20336.apps.googleusercontent.com',
-        scope: ['profile', 'email'],
-        codeChallengeMethod: '',
-        responseType: 'id_token',
-        endpoints: {
-          token: 'http://127.0.0.1:8000/api/users/user/google_signin', // somm backend url to resolve your auth with google and give you the token back
-          // userInfo: 'http://localhost:8000/auth/user/' // the endpoint to get the user info after you recived the token 
-        },
-      },
-    },
-    redirect: {
-      login: '/log-in',
-      logout: '/',
-      callback: '/town-feed',
-      home: '/town-feed'
-    }
   },
 }

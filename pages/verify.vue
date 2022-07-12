@@ -2,20 +2,22 @@
   <div class="container mx-auto px-4 lg:px-12 columns-10 py-8 md:py-12 grid md:grid-cols-2">
     <div>
       <div class="text-tm-black text-xl md:text-3xl lg:pb-12 pb-6 font-medium">
-        We will send you code to reset your password.
+        Verify email, we sent a code to: <span class="text-tm-green">{{ user.email }}</span>
       </div>
-      <form @submit.prevent="resetPassword">
+      <form @submit.prevent="verifyOTP">
         <div class="mb-3 lg:w-96">
           <label
             for="exampleEmail0"
             class="form-label inline-block mb-2 text-tm-black"
-          >Enter email address</label>
+          >Enter verification code</label>
           <input
             id="verify"
-            v-model.trim="reset.email"
-            type="email"
-            maxlength="50"
-            minlength="10"
+            v-model.trim="otp.code"
+            type="text"
+            pattern="\d*"
+            maxlength="6"
+            minlength="6"
+            autocomplete="off"
             class="
                 w-full
                 p-3
@@ -50,44 +52,60 @@
             focus:bg-teal-600 focus:shadow-lg focus:outline-none
           "
         >
-          Send code
+          Verify
         </button>
       </form>
       <p class="text-tm-black">
-        Return to <NuxtLink to="/login" class="text-tm-green ml-2">
-          Login
-        </NuxtLink>
+        Didn't receive code? <span class="text-tm-green ml-2" @click="resendOTP">Resend</span>
       </p>
     </div>
     <div class="hidden md:block m-auto">
-      <img src="~/assets/forgotpassword.svg" class="object-fit">
+      <img src="~/assets/acceptterms.svg" class="object-fit">
     </div>
     <div class="md:hidden mx-auto lg:pb-12 pb-6 mt-8">
-      <img src="~/assets/forgotpassword.svg" class="object-contain mx-auto">
+      <img src="~/assets/acceptterms.svg" class="object-contain mx-auto">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PasswordReset',
+  name: 'VerifyEmail',
   layout: 'AnonymousUser',
+  middleware: 'signup',
   data () {
+    const user = this.$store.state.auth.user
     return {
-      reset: {
-        email: ''
+      user,
+      otp: {
+        code: ''
       }
     }
   },
   methods: {
-    async resetPassword () {
+    async verifyOTP () {
       try {
-        const res = await this.$axios.post('/users/user/forgot_password', {
-          email: this.reset.email
+        await this.$axios.post('/users/user/verify_otp', {
+          otp: this.otp.code,
+          email: this.user.email
         })
-        const user = res.data.data
-        this.$store.commit('auth/updateUser', user)
-        this.$router.push('/verify')
+        this.user.verify = true
+        this.$store.commit('auth/updateUser', this.user)
+        if (this.user.token) {
+          this.$router.push('/profile')
+        } else {
+          this.$router.push('/password-reset-confirm')
+        }
+      } catch (e) {
+        this.$toast.error(e.response.data.data, { position: 'top-center' })
+      }
+    },
+    async resendOTP () {
+      try {
+        await this.$axios.post('/users/user/resend_otp', {
+          email: this.user.email
+        })
+        this.$toast.success('OTP Sent.', { position: 'top-center' })
       } catch (e) {
         this.$toast.error(e.response.data.data, { position: 'top-center' })
       }

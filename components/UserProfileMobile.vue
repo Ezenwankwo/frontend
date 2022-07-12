@@ -12,13 +12,15 @@
   >
     <div class="col-span-3">
       <img
-        class="rounded-full w-20 sm:w-36 h-20 sm:h-36 max-w-none"
+        class="rounded-full w-20 sm:w-36 h-20 sm:h-36 max-w-none ring-2 ring-white"
         alt="A"
         src="~/assets/profilepic.svg"
-      />
+      >
     </div>
     <div class="col-span-7">
-      <p class="font-semibold">Augustus Ezenwankwo</p>
+      <p class="font-semibold">
+        Augustus Ezenwankwo
+      </p>
       <span class="text-sm">@exalted</span>
       <p class="text-sm">
         It has survived not only five centuries, but also the leap into

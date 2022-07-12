@@ -6,19 +6,32 @@
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <span class="text-tm-green">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="64"
-                    height="64"
-                    fill="currentColor"
-                    class="bi bi-badge-tm"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M5.295 11V5.995H7V5H2.403v.994h1.701V11h1.19zm3.397 0V7.01h.058l1.428 3.239h.773l1.42-3.24h.057V11H13.5V5.001h-1.2l-1.71 3.894h-.039l-1.71-3.894H7.634V11h1.06z" />
-                    <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z" />
-                  </svg>
-                </span>
+                <NuxtLink to="/">
+                  <span class="hidden md:block text-tm-green">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="64"
+                      height="64"
+                      fill="currentColor"
+                      class="bi bi-badge-tm-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm3.295 3.995V11H4.104V5.995h-1.7V5H7v.994H5.295zM8.692 7.01V11H7.633V5.001h1.209l1.71 3.894h.039l1.71-3.894H13.5V11h-1.072V7.01h-.057l-1.42 3.239h-.773L8.75 7.008h-.058z" />
+                    </svg>
+                  </span>
+                  <span class="visible md:hidden text-tm-green">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="48"
+                      height="48"
+                      fill="currentColor"
+                      class="bi bi-badge-tm-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm3.295 3.995V11H4.104V5.995h-1.7V5H7v.994H5.295zM8.692 7.01V11H7.633V5.001h1.209l1.71 3.894h.039l1.71-3.894H13.5V11h-1.072V7.01h-.057l-1.42 3.239h-.773L8.75 7.008h-.058z" />
+                    </svg>
+                  </span>
+                </NuxtLink>
               </div>
             </div>
             <div class="hidden md:block">
@@ -66,20 +79,20 @@
                     "
                 >Blog</a>
                 <NuxtLink
-                  v-show="$route.path != '/log-in'"
-                  to="/log-in"
+                  v-show="$route.path != '/login'"
+                  to="/login"
                   class="
                       ml-4
-                      px-3
-                      py-2
-                      rounded-md
+                      px-6
+                      py-3
+                      rounded-full
                       text-base
                       font-medium
                       text-tm-green
-                      border-2
-                      border-tm-green
+                      outline
+                      outline-1
+                      outline-tm-green
                       bg-tm-gray
-                      rounded
                       shadow-md
                       hover:outline-tm-green hover:text-white hover:bg-tm-green
                       focus:outline-tm-green focus:text-white focus:bg-green-900
@@ -88,23 +101,23 @@
                   Login
                 </NuxtLink>
                 <NuxtLink
-                  v-show="$route.path != '/sign-up'"
-                  to="/sign-up"
+                  v-show="$route.path != '/signup'"
+                  to="/signup"
                   class="
                       ml-4
-                      px-3
-                      py-2
-                      rounded-md
+                      px-6
+                      py-3
+                      rounded-full
                       text-base
                       font-medium
                       text-white
-                      border-2
-                      border-tm-green
+                      outline
+                      outline-1
+                      outline-tm-green
                       bg-tm-green
-                      rounded
                       shadow-md
-                      hover:outline-none hover:text-white
-                      focus:outline-none focus:text-white focus:bg-green-900
+                      hover:bg-teal-600 hover:text-white
+                      focus:bg-teal-600 focus:text-white focus:bg-green-900
                     "
                 >
                   Signup
@@ -206,19 +219,19 @@
               "
             >Blog</a>
             <NuxtLink
-              v-show="$route.path != '/log-in'"
-              to="/log-in"
+              v-show="$route.path != '/login'"
+              to="/login"
               class="
-                px-3
-                py-2
-                rounded-md
+                px-6
+                py-3
                 text-base
                 font-medium
                 text-tm-green
                 bg-tm-gray
-                border
-                border-tm-green
-                rounded
+                outline
+                outline-1
+                outline-tm-green
+                rounded-full
                 shadow-md
                 hover:outline-none hover:bg-tm-green hover:text-white
                 focus:outline-none focus:text-white focus:bg-green-900
@@ -227,22 +240,23 @@
               Login
             </NuxtLink>
             <NuxtLink
-              v-show="$route.path != '/sign-up'"
-              to="/sign-up"
+              v-show="$route.path != '/signup'"
+              to="/signup"
               class="
-                px-3
-                py-2
-                rounded-md
+                ml-2
+                px-6
+                py-3
+                rounded-full
                 text-base
                 font-medium
                 text-white
+                outline
+                outline-1
+                outline-tm-green
                 bg-tm-green
-                border
-                border-tm-green
-                rounded
                 shadow-md
-                hover:outline-none hover:text-white
-                focus:outline-none focus:text-white focus:bg-green-900
+                hover:bg-teal-600 hover:text-white
+                focus:bg-teal-600focus:text-white focus:bg-green-900
               "
             >
               Signup
