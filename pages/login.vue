@@ -145,6 +145,7 @@ export default {
           email: this.login.email,
           password: this.login.password
         })
+        this.$store.commit('auth/toggleAuthenticated', true)
         this.$store.commit('auth/updateUser', res.data.data)
         this.$router.push('/feed')
       } catch (e) {

@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: 'UserPosts',
   auth: false,
   layout: 'AuthenticatedUser'
 }

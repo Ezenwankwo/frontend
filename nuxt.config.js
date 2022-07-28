@@ -63,7 +63,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'https://townsmeet-api-pr-107.herokuapp.com/api'
+    baseURL: 'https://townsmeet-api-staging.herokuapp.com/api',
   },
 
   toast: {
@@ -75,6 +75,13 @@ export default {
     manifest: {
       lang: 'en'
     }
+  },
+
+  // Day.js options
+  dayjs: {
+    locales: ['en'],
+    defaultLocale: 'en',
+    plugins: ['relativeTime', 'advancedFormat']
   },
 
   // Google font

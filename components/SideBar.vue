@@ -7,110 +7,74 @@
         </h4>
         <span class="text-tm-green">See more</span>
       </div>
-      <div class="mt-4">
-        <div class="flex items-center my-4">
-          <span
-            class="
-              rounded-full
-              text-tm-black
-              bg-tm-gray
-              flex
-              align-center
-              ease
-              w-max
-            "
-          >
-            <img
-              class="rounded-full w-12 h-12 max-w-none"
-              alt="A"
-              src="~/assets/profilepic.svg"
-            >
-            <span class="flex items-center px-3 py-2">
+      <ul role="list" class="py-6 divide-y divide-slate-200">
+        <li class="flex py-4 first:pt-0 last:pb-0">
+          <img class="h-12 w-12 rounded-full" src="~/assets/profilepic.svg" alt="">
+          <div class="ml-3 overflow-hidden">
+            <p class="text-base font-semibold text-tm-black">
+              Barr. John Acha
+            </p>
+            <p class="text-base text-slate-500 truncate">
+              exalted
+            </p>
+          </div>
+        </li>
+        <li class="flex py-4 first:pt-0 last:pb-0">
+          <img class="h-12 w-12 rounded-full" src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" alt="">
+          <div class="ml-3 overflow-hidden">
+            <p class="text-base font-semibold text-tm-black">
               Augustus Ezenwankwo
-            </span>
-          </span>
-        </div>
-        <div class="flex items-center">
-          <span
-            class="
-              rounded-full
-              text-tm-black
-              bg-tm-gray
-              flex
-              align-center
-              ease
-              w-max
-            "
-          >
-            <img
-              class="rounded-full w-12 h-12 max-w-none"
-              alt="A"
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-            >
-            <span class="flex items-center px-3 py-2"> Eunice Effiong </span>
-          </span>
-        </div>
-        <div class="flex items-center my-4">
-          <span
-            class="
-              rounded-full
-              text-tm-black
-              bg-tm-gray
-              flex
-              align-center
-              ease
-              w-max
-            "
-          >
-            <img
-              class="rounded-full w-12 h-12 max-w-none"
-              alt="A"
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-            >
-            <span class="flex items-center px-3 py-2"> Peter Gregory Obi </span>
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="border-2 border-tm-gray bg-white rounded-3xl my-4 p-4">
-      <div class="flex items-center justify-between">
-        <h4 class="text-lg font-bold">
-          Projects
-        </h4>
-        <span class="text-tm-green">See more</span>
-      </div>
-      <div class="mt-4">
-        <div class="flex items-center my-4">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-            class="rounded w-12 border border-tm-gray mr-4"
-            alt="Avatar"
-          >
-          <div>
-            <p>Clearing of drainage at Uwanse and ...</p>
+            </p>
+            <p class="text-base text-slate-500 truncate">
+              exalted
+            </p>
           </div>
-        </div>
-        <div class="flex items-center">
-          <img
-            src="~/assets/profilepic.svg"
-            class="rounded w-12 border border-tm-gray mr-4"
-            alt="Avatar"
-          >
-          <div>
-            <p>Renovation of Mbukpa police station.</p>
+        </li>
+        <li class="flex py-4 first:pt-0 last:pb-0">
+          <img class="h-12 w-12 rounded-full" src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" alt="">
+          <div class="ml-3 overflow-hidden">
+            <p class="text-base font-semibold text-tm-black">
+              Eunice Effiong
+            </p>
+            <p class="text-base text-slate-500 truncate">
+              exalted
+            </p>
           </div>
-        </div>
-        <div class="flex items-center my-4">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-            class="rounded w-12 border border-tm-gray mr-4"
-            alt="Avatar"
-          >
-          <div>
-            <p>Construction of security post at Ohovbe qtrs.</p>
+        </li>
+        <li class="flex py-4 first:pt-0 last:pb-0">
+          <img class="h-12 w-12 rounded-full" src="~/assets/profilepic.svg" alt="">
+          <div class="ml-3 overflow-hidden">
+            <p class="text-base font-semibold text-tm-black">
+              Barr. John Acha
+            </p>
+            <p class="text-base text-slate-500 truncate">
+              exalted
+            </p>
           </div>
-        </div>
-      </div>
+        </li>
+        <li class="flex py-4 first:pt-0 last:pb-0">
+          <img class="h-12 w-12 rounded-full" src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" alt="">
+          <div class="ml-3 overflow-hidden">
+            <p class="text-base font-semibold text-tm-black">
+              Augustus Ezenwankwo
+            </p>
+            <p class="text-base text-slate-500 truncate">
+              exalted
+            </p>
+          </div>
+        </li>
+        <li class="flex py-4 first:pt-0 last:pb-0">
+          <img class="h-12 w-12 rounded-full" src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" alt="">
+          <div class="ml-3 overflow-hidden">
+            <p class="text-base font-semibold text-tm-black">
+              Eunice Effiong
+            </p>
+            <p class="text-base text-slate-500 truncate">
+              exalted
+            </p>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

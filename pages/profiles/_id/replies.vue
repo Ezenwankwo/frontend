@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: 'UserReplies',
   auth: false,
   layout: 'AuthenticatedUser'
 }

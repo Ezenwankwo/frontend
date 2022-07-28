@@ -3,31 +3,24 @@
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <!-- header -->
       <div class="flex items-center justify-between h-16">
-        <NuxtLink to="/">
-          <span class="hidden md:block text-tm-green">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="64"
-              height="64"
-              fill="currentColor"
-              class="bi bi-badge-tm-fill"
-              viewBox="0 0 16 16"
-            >
-              <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm3.295 3.995V11H4.104V5.995h-1.7V5H7v.994H5.295zM8.692 7.01V11H7.633V5.001h1.209l1.71 3.894h.039l1.71-3.894H13.5V11h-1.072V7.01h-.057l-1.42 3.239h-.773L8.75 7.008h-.058z" />
-            </svg>
-          </span>
-          <span class="visible md:hidden text-tm-green">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              fill="currentColor"
-              class="bi bi-badge-tm-fill"
-              viewBox="0 0 16 16"
-            >
-              <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm3.295 3.995V11H4.104V5.995h-1.7V5H7v.994H5.295zM8.692 7.01V11H7.633V5.001h1.209l1.71 3.894h.039l1.71-3.894H13.5V11h-1.072V7.01h-.057l-1.42 3.239h-.773L8.75 7.008h-.058z" />
-            </svg>
-          </span>
+        <NuxtLink to="/" class="hidden md:block text-tm-green">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            fill="currentColor"
+            class="bi bi-badge-tm-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm3.295 3.995V11H4.104V5.995h-1.7V5H7v.994H5.295zM8.692 7.01V11H7.633V5.001h1.209l1.71 3.894h.039l1.71-3.894H13.5V11h-1.072V7.01h-.057l-1.42 3.239h-.773L8.75 7.008h-.058z" />
+          </svg>
+        </NuxtLink>
+        <NuxtLink to="/profiles/user-posts" class="visible md:hidden text-tm-green">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
+            class="rounded-full w-9 border border-tm-gray ring-2 ring-white"
+            alt="Avatar"
+          >
         </NuxtLink>
         <div>
           <input
@@ -55,7 +48,7 @@
             placeholder="Search Townsmeet..."
           >
         </div>
-        <div class="flex items-center">
+        <div class="flex hidden md:block items-center">
           <NuxtLink to="/profiles/user-posts">
             <img
               src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
@@ -63,6 +56,121 @@
               alt="Avatar"
             >
           </NuxtLink>
+        </div>
+        <div class="flex md:hidden">
+          <!-- Mobile menu button -->
+          <button
+            class="
+              inline-flex
+              items-center
+              justify-center
+              p-2
+              rounded-md
+              text-white
+              bg-tm-green
+              hover:text-white hover:bg-tm-green
+              focus:outline-none focus:bg-tm-green focus:text-white
+            "
+            @click="toggle"
+          >
+            <svg
+              :class="[isOpen ? 'hidden' : 'block', 'h-6 w-6']"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              :class="[isOpen ? 'block' : 'hidden', 'h-6 w-6']"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div :class="[isOpen ? '' : 'hidden', 'md:hidden']">
+        <div class="px-2 pt-2 pb-3 sm:px-3">
+          <NuxtLink
+            to="/support"
+            class="
+                mt-1
+                block
+                px-3
+                py-2
+                rounded-md
+                text-base
+                font-medium
+                text-tm-black
+                hover:text-tm-green
+                focus:outline-none focus:text-green-900
+              "
+          >
+            Support
+          </NuxtLink>
+          <NuxtLink
+            to="/terms"
+            class="
+                mt-1
+                block
+                px-3
+                py-2
+                rounded-md
+                text-base
+                font-medium
+                text-tm-black
+                hover:text-tm-green
+                focus:outline-none focus:text-green-900
+              "
+          >
+            Terms of use
+          </NuxtLink>
+          <NuxtLink
+            to="/privacy"
+            class="
+                mt-1
+                block
+                px-3
+                py-2
+                rounded-md
+                text-base
+                font-medium
+                text-tm-black
+                hover:text-tm-green
+                focus:outline-none focus:text-green-900
+              "
+          >
+            Privacy policy
+          </NuxtLink>
+          <span
+            class="
+                mt-1
+                mb-4
+                block
+                px-3
+                py-2
+                rounded-md
+                text-base
+                font-medium
+                text-tm-black
+                hover:text-tm-green
+                focus:outline-none focus:text-green-900
+              "
+            @click="logout"
+          >Logout</span>
         </div>
       </div>
       <!-- header ends -->
@@ -85,8 +193,8 @@
           >
             <div class="bg-white rounded-3xl py-2">
               <div class="my-10">
-                <NuxtLink to="/town-feed">
-                  <span v-if="$route.path == '/town-feed'">
+                <NuxtLink to="/feed">
+                  <span v-if="$route.path == '/feed'">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -111,17 +219,17 @@
                       <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                     </svg>
                   </span>
-                  <h4 v-if="$route.path == '/town-feed'" class="text-lg font-medium leading-tight my-2 text-tm-green">
-                    Town
+                  <h4 v-if="$route.path == '/feed'" class="text-lg font-medium leading-tight my-2 text-tm-green">
+                    Feed
                   </h4>
                   <h4 v-else class="text-lg font-medium leading-tight my-2 text-tm-black">
-                    Town
+                    Feed
                   </h4>
                 </NuxtLink>
               </div>
               <div class="my-10">
-                <NuxtLink to="/town-invite">
-                  <span v-if="$route.path == '/town-invite'">
+                <NuxtLink to="/invite">
+                  <span v-if="$route.path == '/invite'">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -147,7 +255,7 @@
                       <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
                     </svg>
                   </span>
-                  <h4 v-if="$route.path == '/town-invite'" class="text-lg font-medium leading-tight my-2 text-tm-green">
+                  <h4 v-if="$route.path == '/invite'" class="text-lg font-medium leading-tight my-2 text-tm-green">
                     Invite
                   </h4>
                   <h4 v-else class="text-lg font-medium leading-tight my-2">
@@ -225,52 +333,22 @@
                 </NuxtLink>
               </div>
               <hr class="border border-2 border-dashed">
-              <div class="flex justify-center my-4">
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    class="bi bi-gear"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
-                  </svg>
-                </span>
-                <p class="ml-2">
-                  Bookmarks
-                </p>
-              </div>
-              <div class="flex justify-center my-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="bi bi-question-diamond"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z" />
-                  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                </svg>
+              <div class="text-center my-4">
                 <p class="ml-2">
                   Support
                 </p>
               </div>
-              <div class="flex justify-center my-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="bi bi-box-arrow-left"
-                  viewBox="0 0 16 16"
-                >
-                  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
-                  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
-                </svg>
+              <div class="text-center my-4">
+                <p class="ml-2">
+                  Terms
+                </p>
+              </div>
+              <div class="text-center my-4">
+                <p class="ml-2">
+                  Privacy
+                </p>
+              </div>
+              <div class="text-center my-4" @click="logout">
                 <p class="ml-2">
                   Logout
                 </p>
@@ -290,10 +368,10 @@
       <!-- mobile nav -->
       <div class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-tm-green p-2 m-2 rounded-3xl shadow">
         <div class="flex items-center justify-around text-white text-sm">
-          <NuxtLink to="/town-feed">
+          <NuxtLink to="/feed">
             <span>
               <svg
-                v-if="$route.path == '/town-feed'"
+                v-if="$route.path == '/feed'"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -315,14 +393,14 @@
                 <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
                 <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
               </svg>
-              <span v-if="$route.path == '/town-feed'" class="font-bold">Town</span>
-              <span v-else>Town</span>
+              <span v-if="$route.path == '/feed'" class="font-bold">Feed</span>
+              <span v-else>Feed</span>
             </span>
           </NuxtLink>
-          <NuxtLink to="/town-invite">
+          <NuxtLink to="/invite">
             <span>
               <svg
-                v-if="$route.path == '/town-invite'"
+                v-if="$route.path == '/invite'"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -345,7 +423,7 @@
                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                 <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
               </svg>
-              <span v-if="$route.path == '/town-invite'" class="font-bold">Invite</span>
+              <span v-if="$route.path == '/invite'" class="font-bold">Invite</span>
               <span v-else>Invite</span>
             </span>
           </NuxtLink>
@@ -415,11 +493,24 @@
 
 <script>
 export default {
+  middleware: 'authorised',
   data () {
     return {
+      isOpen: false,
       form: {
         search: ''
       }
+    }
+  },
+  methods: {
+    toggle () {
+      this.isOpen = !this.isOpen
+    },
+    logout () {
+      this.$store.commit('auth/updateUser', {})
+      this.$store.commit('auth/updateProfile', {})
+      this.$store.commit('auth/toggleAuthenticated', false)
+      this.$router.push('/login')
     }
   }
 }

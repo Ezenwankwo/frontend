@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: 'UserLikes',
   auth: false,
   layout: 'AuthenticatedUser'
 }
