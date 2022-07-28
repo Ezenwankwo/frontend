@@ -70,7 +70,7 @@
         </div>
         <div class="mb-3 lg:w-96">
           <label
-            for="exampleFormControlTextarea1"
+            for="bio"
             class="form-label inline-block mb-2 text-tm-black"
           >Bio</label>
           <textarea
@@ -176,7 +176,7 @@ export default {
         const res = await this.$axios.post('/users/profile/create_profile', formData, config)
         const profile = res.data.data
         this.$store.commit('auth/updateProfile', profile)
-        this.$store.commit('auth/toggleAuthenticted', true)
+        this.$store.commit('auth/toggleAuthenticated', true)
         this.profile.image = null
         this.$router.push('/feed')
       } catch (e) {

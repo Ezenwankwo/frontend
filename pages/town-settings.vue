@@ -150,7 +150,7 @@
             class="form-label inline-block mb-2 text-tm-black"
           >Current Password</label>
           <input
-            id="password"
+            id="password1"
             type="password"
             class="
                   w-full
@@ -176,7 +176,7 @@
             class="form-label inline-block mb-2 text-tm-black"
           >New Password</label>
           <input
-            id="password"
+            id="password2"
             type="password"
             class="
                   w-full
@@ -202,7 +202,7 @@
             class="form-label inline-block mb-2 text-tm-black"
           >Repeat New Password</label>
           <input
-            id="password"
+            id="password3"
             type="password"
             class="
                   w-full
