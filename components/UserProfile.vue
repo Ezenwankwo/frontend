@@ -1,20 +1,26 @@
 <template>
   <div class="border-2 border-tm-gray bg-white rounded-3xl px-4 py-8">
     <img
+      v-if="image == null"
       class="rounded-full w-36 h-36 max-w-none ring-2 ring-white mx-auto"
       alt="A"
       src="~/assets/profilepic.svg"
     >
+    <img
+      v-else
+      class="rounded-full w-36 h-36 max-w-none ring-2 ring-white mx-auto"
+      alt="A"
+      :src="image"
+    >
     <div class="my-6 text-center">
       <p class="text-lg font-semibold">
-        Augustus Ezenwankwo
+        {{ name }}
       </p>
-      <span>@exalted</span>
+      <span>@{{ username }}</span>
     </div>
     <div class="text-center">
       <p>
-        It has survived not only five centuries, but also the leap into
-        electronic typesetting, remaining essentially unchanged.
+        {{ bio }}
       </p>
       <span class="flex items-center justify-center mt-6">
         <svg
@@ -32,9 +38,10 @@
             d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
           />
         </svg>
-        <span class="text-sm">Joined 13 Aug, 2021</span>
+        <span class="text-sm">Joined {{ $dayjs(created).fromNow() }}</span>
       </span>
       <button
+        v-show="$store.state.auth.user.public_id === user"
         class="
           font-medium
           bg-white
@@ -52,3 +59,16 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    user: { type: String, default: '' },
+    name: { type: String, default: '' },
+    username: { type: String, default: '' },
+    image: { type: String, default: '' },
+    bio: { type: String, default: '' },
+    created: { type: String, default: '' }
+  }
+}
+</script>
