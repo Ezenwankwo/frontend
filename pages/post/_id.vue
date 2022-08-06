@@ -5,18 +5,18 @@
       <div class="border-2 border-tm-gray bg-white rounded-3xl p-4 sm:p-6 mt-1 sm:mt-2">
         <div class="flex justify-between">
           <li class="flex pt-4 first:pt-0 last:pb-0">
-            <NuxtLink :to="`/profiles/${post.profile.user}/posts`">
+            <NuxtLink :to="`/profile/${post.profile.user}/posts`">
               <img v-if="post.profile.image == null" class="h-16 w-16 rounded-full" src="~/assets/profilepic.svg" alt="">
               <img v-else class="h-16 w-16 rounded-full" :src="post.profile.image" alt="">
             </NuxtLink>
             <div class="ml-3 overflow-hidden">
               <p class="text-lg font-semibold text-tm-black truncate">
-                <NuxtLink :to="`/profiles/${post.profile.user}/posts`">
+                <NuxtLink :to="`/profile/${post.profile.user}/posts`">
                   {{ post.profile.name }}
                 </NuxtLink>
               </p>
               <p class="text-lg truncate">
-                <NuxtLink to="/category" class="text-tm-green">
+                <NuxtLink v-if="post.category" :to="`/${post.category.toLowerCase()}`" class="text-tm-green">
                   {{ post.category }}
                 </NuxtLink> <span v-if="post.category">|</span> <i class="text-slate-500">{{ $dayjs(post.created).fromNow() }}</i>
               </p>

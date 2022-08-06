@@ -4,18 +4,18 @@
   >
     <div class="flex justify-between">
       <li class="flex pt-4 first:pt-0 last:pb-0">
-        <NuxtLink :to="`/profiles/${user}/posts`">
+        <NuxtLink :to="`/profile/${user}/posts`">
           <img v-if="image == null" class="h-12 w-12 rounded-full" src="~/assets/profilepic.svg" alt="">
           <img v-else class="h-12 w-12 rounded-full" :src="image" alt="">
         </NuxtLink>
         <div class="ml-3 overflow-hidden">
           <p class="text-base font-semibold text-tm-black truncate">
-            <NuxtLink :to="`/profiles/${user}/posts`">
+            <NuxtLink :to="`/profile/${user}/posts`">
               {{ name }}
             </NuxtLink>
           </p>
           <p class="text-base truncate">
-            <NuxtLink to="/category" class="text-tm-green">
+            <NuxtLink :to="`/${category.toLowerCase()}`" class="text-tm-green">
               {{ category }}
             </NuxtLink> | <i class="text-slate-500">{{ $dayjs(created).fromNow() }}</i>
           </p>

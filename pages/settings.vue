@@ -248,7 +248,7 @@
 
 <script>
 export default {
-  auth: false,
+  name: 'TownSettings',
   layout: 'AuthenticatedUser'
 }
 </script>

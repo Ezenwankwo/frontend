@@ -141,12 +141,17 @@ export default {
   methods: {
     async loginWithTownsmeet () {
       try {
-        const res = await this.$axios.post('/users/user/login_user', {
+        const user = await this.$axios.post('/users/user/login_user', {
           email: this.login.email,
           password: this.login.password
         })
+
+        this.$axios.setToken(user.data.data.token, 'Bearer')
+        const profile = await this.$axios.get(`/users/profile/${user.data.data.public_id}/retrieve_profile`)
+
         this.$store.commit('auth/toggleAuthenticated', true)
-        this.$store.commit('auth/updateUser', res.data.data)
+        this.$store.commit('auth/updateUser', user.data.data)
+        this.$store.commit('auth/updateProfile', profile.data.data)
         this.$router.push('/feed')
       } catch (e) {
         this.$toast.error(e.response.data.data, { position: 'top-center' })
