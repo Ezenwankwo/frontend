@@ -88,29 +88,6 @@
           Login
         </button>
       </form>
-      <button
-        type="button"
-        class="
-          w-full
-          lg:w-96
-          mt-3
-          px-6
-          py-3
-          bg-white bg-clip-padding
-          text-tm-black
-          font-medium
-          text-lg
-          leading-normal
-          border
-          border-tm-green
-          rounded-full
-          shadow-md
-          hover:bg-tm-green hover:shadow-lg hover:text-white
-          focus:bg-green-900 focus:shadow-lg focus:outline-none focus:text-white
-        "
-      >
-        Login with Google
-      </button>
       <p class="text-tm-black mt-3">
         Do not have an account? <NuxtLink to="/signup" class="text-tm-green ml-2">
           Signup
@@ -141,17 +118,17 @@ export default {
   methods: {
     async loginWithTownsmeet () {
       try {
-        const user = await this.$axios.post('/users/user/login_user', {
+        const user = await this.$axios.$post('/users/user/login_user', {
           email: this.login.email,
           password: this.login.password
         })
 
-        this.$axios.setToken(user.data.data.token, 'Bearer')
-        const profile = await this.$axios.get(`/users/profile/${user.data.data.public_id}/retrieve_profile`)
+        this.$axios.setToken(user.data.token, 'Bearer')
+        const profile = await this.$axios.$get(`/users/profile/${user.data.public_id}/retrieve_profile`)
 
         this.$store.commit('auth/toggleAuthenticated', true)
-        this.$store.commit('auth/updateUser', user.data.data)
-        this.$store.commit('auth/updateProfile', profile.data.data)
+        this.$store.commit('auth/updateUser', user.data)
+        this.$store.commit('auth/updateProfile', profile.data)
         this.$router.push('/feed')
       } catch (e) {
         this.$toast.error(e.response.data.data, { position: 'top-center' })

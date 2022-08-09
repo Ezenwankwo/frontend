@@ -90,29 +90,6 @@
           Signup
         </button>
       </form>
-      <button
-        type="button"
-        class="
-          w-full
-          lg:w-96
-          mt-3
-          px-6
-          py-3
-          bg-white bg-clip-padding
-          text-tm-black
-          font-medium
-          text-lg
-          leading-normal
-          border
-          border-tm-green
-          rounded-full
-          shadow-md
-          hover:bg-tm-green hover:shadow-lg hover:text-white
-          focus:bg-green-900 focus:shadow-lg focus:outline-none focus:text-white
-        "
-      >
-        Signup with Google
-      </button>
       <p class="text-tm-black mt-3">
         Have an account? <NuxtLink to="/login" class="text-tm-green ml-2">
           Login
@@ -143,12 +120,11 @@ export default {
   methods: {
     async signupWithTownsmeet () {
       try {
-        const res = await this.$axios.post('/users/user/create_user', {
+        const res = await this.$axios.$post('/users/user/create_user', {
           email: this.signup.email,
           password: this.signup.password
         })
-        const user = res.data.data
-        this.$store.commit('auth/updateUser', user)
+        this.$store.commit('auth/updateUser', res.data)
         this.$router.push('/verify')
       } catch (e) {
         this.$toast.error(e.response.data.data, { position: 'top-center' })

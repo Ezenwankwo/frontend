@@ -72,7 +72,7 @@
 export default {
   name: 'VerifyEmail',
   layout: 'AnonymousUser',
-  middleware: 'signup',
+  // middleware: 'signup',
   data () {
     const user = this.$store.state.auth.user
     return {
@@ -92,7 +92,7 @@ export default {
         this.user.verify = true
         this.$store.commit('auth/updateUser', this.user)
         if (this.user.token) {
-          this.$router.push('/profile')
+          this.$router.push('/create-profile')
         } else {
           this.$router.push('/password-reset-confirm')
         }

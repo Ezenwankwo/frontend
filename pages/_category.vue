@@ -79,21 +79,27 @@
 export default {
   name: 'CategoryPosts',
   layout: 'AuthenticatedUser',
-  async asyncData ({ params, $axios, store }) {
-    const user = store.state.auth.user
-    try {
-      $axios.setToken(user.token, 'Bearer')
-      const res = await $axios.get(`/posts/category/${params.category}/category_posts`)
-      return { posts: res.data.data }
-    } catch (e) {
-      return { posts: [] }
+  data () {
+    return {
+      posts: []
     }
   },
-  data () {
+  async fetch () {
     const user = this.$store.state.auth.user
-    return {
-      user
-      // posts: []
+    const location = this.$store.state.auth.location
+    try {
+      this.$axios.setToken(user.token, 'Bearer')
+      const res = await this.$axios.$get(`/posts/category/${this.$route.params.category}/category_posts`, {
+        params: {
+          lat: location.lat,
+          lng: location.lng
+        }
+      })
+      this.posts = res.data
+    } catch (e) {
+      const savedPosts = this.$store.state.post.feed
+      this.posts = savedPosts.filter(post => post.category === this.$route.params.category)
+      this.$toast.warning('Failed to refresh feed.', { position: 'top-center' })
     }
   }
 }

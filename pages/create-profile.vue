@@ -173,8 +173,8 @@ export default {
       }
       try {
         this.$axios.setToken(this.user.token, 'Bearer')
-        const res = await this.$axios.post('/users/profile/create_profile', formData, config)
-        const profile = res.data.data
+        const res = await this.$axios.$post('/users/profile/create_profile', formData, config)
+        const profile = res.data
         this.$store.commit('auth/updateProfile', profile)
         this.$store.commit('auth/toggleAuthenticated', true)
         this.profile.image = null
