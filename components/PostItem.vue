@@ -12,12 +12,12 @@
           <p class="text-base font-semibold text-tm-black truncate">
             <NuxtLink :to="`/profile/${user}/posts`">
               {{ name }}
-            </NuxtLink>
+            </NuxtLink> <span v-if="distance">-</span> <span v-if="distance" class="text-xs text-tm-black">{{ distance }}km</span>
           </p>
           <p class="text-base truncate">
-            <NuxtLink :to="`/${category.toLowerCase()}`" class="text-tm-green">
+            <NuxtLink v-if="category" :to="`/${category.toLowerCase()}`" class="text-tm-green">
               {{ category }}
-            </NuxtLink> | <i class="text-slate-500">{{ $dayjs(created).fromNow() }}</i>
+            </NuxtLink> <span v-if="category">|</span> <i class="text-slate-500">{{ $dayjs(created).fromNow() }}</i>
           </p>
         </div>
       </li>
@@ -223,6 +223,7 @@ export default {
     likes: { type: Number, default: 0 },
     liked: { type: Boolean, default: true },
     replies: { type: Number, default: 0 },
+    distance: { type: Number, default: 0 },
     created: { type: String, default: '' }
   },
   data () {

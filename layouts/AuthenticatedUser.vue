@@ -485,8 +485,8 @@
               <svg
                 v-else
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 fill="currentColor"
                 class="bi bi-gear mx-auto"
                 viewBox="0 0 16 16"
@@ -525,6 +525,8 @@ export default {
     logout () {
       this.$store.commit('auth/updateUser', {})
       this.$store.commit('auth/updateProfile', {})
+      this.$store.commit('auth/updateLocation', {})
+      this.$store.commit('post/updateFeed', [])
       this.$store.commit('auth/toggleAuthenticated', false)
       this.$router.push('/login')
     }

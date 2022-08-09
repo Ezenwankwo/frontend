@@ -1,7 +1,8 @@
 export const state = () => ({
   authenticated: false,
   user: {},
-  profile: {}
+  profile: {},
+  location: {}
 })
 
 export const mutations = {
@@ -13,5 +14,8 @@ export const mutations = {
   },
   updateProfile (state, newProfile) {
     state.profile = newProfile
+  },
+  updateLocation (state, newLocation) {
+    state.location = newLocation
   }
 }

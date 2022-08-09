@@ -69,7 +69,7 @@
                 :allow-multiple="false"
                 accepted-file-types="image/*, video/*"
                 max-file-size="50MB"
-                server="https://townsmeet-api-staging.herokuapp.com/api/fp/process/"
+                server="https://townsmeet-api.herokuapp.com/api/fp/process/"
                 image-crop-aspect-ratio="1:1"
                 @processfile="serverResponse"
               />
@@ -133,8 +133,7 @@ export default {
       post: {
         category: '',
         body: '',
-        upload_id: '',
-        location: 'Point(6.5568768 3.3685504)'
+        upload_id: ''
       }
     }
   },
@@ -147,6 +146,7 @@ export default {
       }
     },
     async createPost () {
+      const location = this.$store.state.auth.location
       try {
         this.$axios.setToken(this.user.token, 'Bearer')
         await this.$axios.post('/posts/post/create_post', {
@@ -154,12 +154,12 @@ export default {
           category: this.post.category,
           body: this.post.body,
           upload_id: this.post.upload_id,
-          location: this.post.location
+          location: `Point(${location.lng} ${location.lat})`
         })
-        this.$toast.success('Post creation successful.', { position: 'top-center' })
+        this.$toast.success('Post sent.', { position: 'top-center' })
         this.$router.push('/feed')
       } catch (e) {
-        this.$toast.error(e.response.data.data, { position: 'top-center' })
+        this.$toast.error('Post failed. Try again shortly.', { position: 'top-center' })
       }
     }
   }
