@@ -73,6 +73,8 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'Townsmeet',
+      description: "See what's happening in your town.",
       lang: 'en'
     }
   },
