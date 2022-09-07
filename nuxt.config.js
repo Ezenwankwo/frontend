@@ -15,7 +15,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@fortawesome/fontawesome-svg-core/styles.css',
+    'filepond/dist/filepond.min.css',
+    'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
